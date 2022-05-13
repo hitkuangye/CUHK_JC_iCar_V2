@@ -206,6 +206,7 @@ namespace huskylens {
      */
     //%block="HuskyLens get a total number of learned IDs from the result"
     //% weight=79
+    //% advanced=true
     export function getIds(): number {
         return Protocol_t[2];
     }
