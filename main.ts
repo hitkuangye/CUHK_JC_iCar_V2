@@ -42,11 +42,11 @@ namespace CUHK_JC_iCar {
         //% blockId="Car_SpinRight" block="SpinRight"
         Car_SpinRight = 7
     }
-    enum singleWheel{
+    export enum singleWheel{
         Left,
         Right
     }
-    enum direction{
+    export enum direction{
         Forward,
         Backward
     }
