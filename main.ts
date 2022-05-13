@@ -106,13 +106,24 @@ namespace CUHK_JC_iCar {
     //% speed.min=0 speed.max=100
     //% group="Move"
     export function CarCtrlSpeed(index: CarState, speed: number): void {
-        spd = Math.round(pins.map(speed,0,100,350,4096))
-        pi12 = 0
-        pi13 = 0
-        pi14 = 0
-        pi15 = 0
-        if (index == 1 || (index == 3 || (index == 4 || index == 7))){}
-        
+        let spd = Math.round(pins.map(speed,0,100,350,4096))
+        let pi12 = 0, pi13 = 0, pi14 = 0, pi15 = 0
+        if (index == 1 || index == 4 || index == 7){
+            pi12 = spd
+        }
+        if (index == 1 || index == 3 || index == 6){
+            pi15 = spd
+        }
+        if (index == 2 || index == 6){
+            pi13 = spd
+        }        
+        if (index == 2 || index == 7){
+            pi14 = spd
+        }   
+        setPwm(12, 0, pi12);
+        setPwm(13, 0, pi13);
+        setPwm(15, 0, pi14);
+        setPwm(14, 0, pi15);
     }
  
  /*****************************************************************************************************************************************
