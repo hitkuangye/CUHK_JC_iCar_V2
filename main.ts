@@ -25,6 +25,7 @@ namespace CUHK_JC_iCar {
     const PRESCALE = 0xFE
 
     let initialized = false
+    let yahStrip: neopixel.Strip;
     let pi12 = 0, pi13 = 0, pi14 = 0, pi15 = 0, spd = 0
 
     export enum CarState {
@@ -98,6 +99,12 @@ namespace CUHK_JC_iCar {
         buf[4] = (off >> 8) & 0xff;
         pins.i2cWriteBuffer(PCA9685_ADD, buf);
     }
+    function RGB_Car_Program(): neopixel.Strip {
+        if (!yahStrip) {
+            yahStrip = neopixel.create(DigitalPin.P16, 3, NeoPixelMode.RGB);
+        }
+        return yahStrip;  
+    }
     
  /*****************************************************************************************************************************************
  *  MOVE *****************************************************************************************************************************
@@ -154,6 +161,7 @@ namespace CUHK_JC_iCar {
         setPwm(15, 0, pi14);
         setPwm(14, 0, pi15);
     }
+  
  /*****************************************************************************************************************************************
  *  Head Lights *****************************************************************************************************************************
  ****************************************************************************************************************************************/
@@ -164,5 +172,64 @@ namespace CUHK_JC_iCar {
         setPwm(0, 0, Math.round(((color >> 16) & 0xFF)*4095/255));
         setPwm(1, 0, Math.round(((color >> 8) & 0xFF)*4095/255));
         setPwm(2, 0, Math.round(((color) & 0xFF)*4095/255));
+    }
+    //% block="Turn Head Lights Off"
+    //% group="Head Lights"
+    export function headLightsOff() {
+        setHeadColor(0)
+    }
+ /*****************************************************************************************************************************************
+ *  Breath Lights *****************************************************************************************************************************
+ ****************************************************************************************************************************************/
+    //% block="Run Horse Light"
+    //% group="Breath Lights"
+    export function runFlowLight() { 
+        for (let index = 0; index < 3; index++) {
+            RGB_Car_Program().clear()
+            RGB_Car_Program().setPixelColor(0, neopixel.colors(NeoPixelColors.Red))
+            basic.pause(200)
+            RGB_Car_Program().clear()
+            RGB_Car_Program().setPixelColor(1, neopixel.colors(NeoPixelColors.Blue))
+            basic.pause(200)
+            RGB_Car_Program().clear()
+            RGB_Car_Program().setPixelColor(3, neopixel.colors(NeoPixelColors.Green))
+            basic.pause(200)
+        }
+    }
+    //% block="Run Flow Light"
+    //% group="Breath Lights"
+    export function runFlowLight() {
+        for (let index = 0; index < 3; index++) {
+            for (let index = 0; index <= 2; index++) {
+                RGB_Car_Program().clear()
+                RGB_Car_Program().setPixelColor(index, neopixel.colors(NeoPixelColors.Green))
+                basic.pause(200)
+            }
+        }
+    }
+    
+    //% block="Run Breath Light"
+    //% group="Breath Lights"
+    export function runBreathLight() {
+        for (let index = 0; index <= 13; index++) {
+            RGB_Car_Program().showColor(neopixel.rgb(0, index * 19, 0))
+            basic.pause(100)
+        }
+        for (let index = 0; index <= 13; index++) {
+            RGB_Car_Program().showColor(neopixel.rgb(0, 247 - index * 19, 0))
+            basic.pause(100)
+        }
+    }
+    
+    //% block="Set Breath Lights to $color"
+    //% color.shadow="colorNumberPicker"
+    //% group="Breath Lights"
+    export function setBreathColor(color: number) {
+        RGB_Car_Program().showColor(neopixel.rgb(((color >> 16) & 0xFF),((color >> 8) & 0xFF),((color) & 0xFF)*4095/255))
+    } 
+    //% block="Turn Breath Lights Off"
+    //% group="Breath Lights"
+    export function breathLightsOff() {
+        RGB_Car_Program().clear()
     }
 }
