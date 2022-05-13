@@ -232,6 +232,7 @@ namespace huskylens {
      */
     //% block="HuskyLens get %data of arrow closest to the center of screen from the result"
     //% weight=77
+    //% advanced=true
     export function readArrow_s(data: Content4): number {
         let hk_x
         let hk_y = readArrowCenterParameterDirect()
