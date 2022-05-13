@@ -82,6 +82,11 @@ namespace CUHK_JC_iCar {
     //% block="Set Head Lights to $color"
     //% color.shadow="colorNumberPicker"
     export function setHeadColor(color: number) {
-        basic.showNumber(number)
+        let r = Math.round(((color >> 16) & 0xFF)*4095/255)
+        let g = Math.round(((color >> 8) & 0xFF)*4095/255)
+        let b = Math.round(((color) & 0xFF)*4095/255)
+        setPwm(0, 0, r);
+        setPwm(1, 0, g);
+        setPwm(2, 0, b);
     }
 }
