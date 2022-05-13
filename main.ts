@@ -2,7 +2,7 @@
 Copyright (C): 2021-2030, The Chinese University of Hong Kong.
 */
 
-//% color="#006400" weight=20 icon="\e1ec"
+//% color="#006400" weight=20 icon="\uf1b9"
 namespace CUHK_JC_iCar {
     const PCA9685_ADD = 0x41
     const MODE1 = 0x00
@@ -79,9 +79,10 @@ namespace CUHK_JC_iCar {
         pins.i2cWriteBuffer(PCA9685_ADD, buf);
     }
     
-    //% block="show color $color"
+    //% block="Set Head Lights to $color"
     //% color.shadow="colorNumberPicker"
-    export function showColor(color: number) {
+    export function setHeadColor(color: number) {
+        
         
     }
 }
