@@ -207,6 +207,7 @@ namespace huskylens {
      */
     //% block="HuskyLens get %data of frame closest to the center of screen from the result"
     //% weight=77
+    //% advanced=true
     export function readBox_s(data: Content3): number {
         let hk_x
         let hk_y = readBlockCenterParameterDirect();
@@ -258,6 +259,7 @@ namespace huskylens {
      */
     //% block="HuskyLens check if ID %id is learned from the result"
     //% weight=76
+    //% advanced=true
     export function isLearned(id: number): boolean {
         let hk_x = countLearnedIDs();
         if (id <= hk_x) return true;
