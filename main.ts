@@ -145,7 +145,7 @@ namespace CUHK_JC_iCar {
     export function singleTurn(singleWheel:singleWheel, direction: direction, speed: number): void {
         if (singleWheel==0 && direction == 0){
             carCtrlSpeed(4, speed)
-        } esle if (singleWheel==1 && direction == 0){
+        } else if (singleWheel==1 && direction == 0){
             carCtrlSpeed(3, speed)
         } else if (singleWheel==0 && direction == 1){
             setPwm(12, 0, 0);
