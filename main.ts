@@ -26,8 +26,8 @@ namespace CUHK_JC_iCar {
     const PRESCALE = 0xFE
 
     let initialized = false
-    let yahStrip: neopixel.Strip;
-
+ /*   let yahStrip: neopixel.Strip;
+    */
     export enum enColor {
 
         //% blockId="OFF" block="Off"
