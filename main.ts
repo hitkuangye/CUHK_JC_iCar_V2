@@ -25,22 +25,16 @@ namespace CUHK_JC_iCar {
     const PRESCALE = 0xFE
 
     let initialized = false
-    
+    let pi12 = 0, pi13 = 0, pi14 = 0, pi15 = 0, spd = 0
+
     export enum CarState {
-        //% blockId="Car_Run" block="Forward"
-        Car_Run = 1,
-        //% blockId="Car_Back" block="Backward"
-        Car_Back = 2,
-        //% blockId="Car_Left" block="TurnLeft"
-        Car_Left = 3,
-        //% blockId="Car_Right" block="TurnRight"
-        Car_Right = 4,
-        //% blockId="Car_Stop" block="Stop"
-        Car_Stop = 5,
-        //% blockId="Car_SpinLeft" block="SpinLeft"
-        Car_SpinLeft = 6,
-        //% blockId="Car_SpinRight" block="SpinRight"
-        Car_SpinRight = 7
+        Forward,
+        Backward,
+        TurnLeft,
+        TurnRight,
+        Stop,
+        SpinLeft,
+        SpinRight
     }
     export enum singleWheel{
         Left,
@@ -108,31 +102,6 @@ namespace CUHK_JC_iCar {
  /*****************************************************************************************************************************************
  *  MOVE *****************************************************************************************************************************
  ****************************************************************************************************************************************/
-    
-    //% block="Move|%index| at speed %speed |\\%"
-    //% speed.min=0 speed.max=100
-    //% group="Move"
-    export function carCtrlSpeed(index: CarState, speed: number): void {
-        let spd = Math.round(pins.map(speed,0,100,350,4096))
-        let pi12 = 0, pi13 = 0, pi14 = 0, pi15 = 0
-        if (index == 1 || index == 4 || index == 7){
-            pi12 = spd
-        }
-        if (index == 1 || index == 3 || index == 6){
-            pi15 = spd
-        }
-        if (index == 2 || index == 6){
-            pi13 = spd
-        }        
-        if (index == 2 || index == 7){
-            pi14 = spd
-        }   
-        setPwm(12, 0, pi12);
-        setPwm(13, 0, pi13);
-        setPwm(15, 0, pi14);
-        setPwm(14, 0, pi15);
-    }
-    
     //% block="Car Stop"
     //% group="Move"
     export function carStop(){
@@ -144,9 +113,9 @@ namespace CUHK_JC_iCar {
     //% group="Move"
     export function singleTurn(singleWheel:singleWheel, direction: direction, speed: number): void {
         if (singleWheel==0 && direction == 0){
-            carCtrlSpeed(4, speed)
-        } else if (singleWheel==1 && direction == 0){
             carCtrlSpeed(3, speed)
+        } else if (singleWheel==1 && direction == 0){
+            carCtrlSpeed(2, speed)
         } else if (singleWheel==0 && direction == 1){
             setPwm(12, 0, 0);
             setPwm(13, 0, Math.round(pins.map(speed,0,100,350,4096)));
@@ -158,6 +127,32 @@ namespace CUHK_JC_iCar {
             setPwm(15, 0, Math.round(pins.map(speed,0,100,350,4096)));
             setPwm(14, 0, 0);   
         }
+    }
+    //% block="Move|%index| at speed %speed |\\%"
+    //% speed.min=0 speed.max=100
+    //% group="Move"
+    export function carCtrlSpeed(index: CarState, speed: number): void {
+        spd = Math.round(pins.map(speed,0,100,350,4096))
+        pi12 = 0
+        pi13 = 0
+        pi14 = 0
+        pi15 = 0
+        if (index == 0 || index == 3 || index == 6){
+            pi12 = spd
+        }
+        if (index == 0 || index == 2 || index == 5){
+            pi15 = spd
+        }
+        if (index == 1 || index == 5){
+            pi13 = spd
+        }        
+        if (index == 1 || index == 6){
+            pi14 = spd
+        }   
+        setPwm(12, 0, pi12);
+        setPwm(13, 0, pi13);
+        setPwm(15, 0, pi14);
+        setPwm(14, 0, pi15);
     }
  /*****************************************************************************************************************************************
  *  Head Lights *****************************************************************************************************************************
