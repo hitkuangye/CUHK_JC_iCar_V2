@@ -2,7 +2,8 @@
 Copyright (C): 2021-2030, The Chinese University of Hong Kong.
 */
 
-//% color="#006400" weight=20 icon="\ue1ec"
+//% color="#006400" weight=20 icon="\uf5e4"
+//% groups='["Move","Head Lights","Breath Lights","Ultrasonic Sensor","Line Detector","Obstacle Sensor","Switch","Servomotor","Digital Read","Analog Read"]'
 namespace CUHK_JC_iCar {
     const PCA9685_ADD = 0x41
     const MODE1 = 0x00
@@ -24,7 +25,25 @@ namespace CUHK_JC_iCar {
     const PRESCALE = 0xFE
 
     let initialized = false
-        function i2cwrite(addr: number, reg: number, value: number) {
+    
+    export enum CarState {
+        //% blockId="Car_Run" block="Forward"
+        Car_Run = 1,
+        //% blockId="Car_Back" block="Backward"
+        Car_Back = 2,
+        //% blockId="Car_Left" block="TurnLeft"
+        Car_Left = 3,
+        //% blockId="Car_Right" block="TurnRight"
+        Car_Right = 4,
+        //% blockId="Car_Stop" block="Stop"
+        Car_Stop = 5,
+        //% blockId="Car_SpinLeft" block="SpinLeft"
+        Car_SpinLeft = 6,
+        //% blockId="Car_SpinRight" block="SpinRight"
+        Car_SpinRight = 7
+    }
+    
+    function i2cwrite(addr: number, reg: number, value: number) {
         let buf = pins.createBuffer(2)
         buf[0] = reg
         buf[1] = value
@@ -79,14 +98,32 @@ namespace CUHK_JC_iCar {
         pins.i2cWriteBuffer(PCA9685_ADD, buf);
     }
     
+ /*****************************************************************************************************************************************
+ *  MOVE *****************************************************************************************************************************
+ ****************************************************************************************************************************************/
+    
+    //% block   block="Move|%index| at speed %speed |\\%"
+    //% speed.min=0 speed.max=100
+    //% group="Move"
+    export function CarCtrlSpeed(index: CarState, speed: number): void {
+        spd = Math.round(pins.map(speed,0,100,350,4096))
+        pi12 = 0
+        pi13 = 0
+        pi14 = 0
+        pi15 = 0
+        if (index == 1 || (index == 3 || (index == 4 || index == 7))){}
+        
+    }
+ 
+ /*****************************************************************************************************************************************
+ *  Head Lights *****************************************************************************************************************************
+ ****************************************************************************************************************************************/
     //% block="Set Head Lights to $color"
     //% color.shadow="colorNumberPicker"
+    //% group="Head Lights"
     export function setHeadColor(color: number) {
-        let r = Math.round(((color >> 16) & 0xFF)*4095/255)
-        let g = Math.round(((color >> 8) & 0xFF)*4095/255)
-        let b = Math.round(((color) & 0xFF)*4095/255)
-        setPwm(0, 0, r);
-        setPwm(1, 0, g);
-        setPwm(2, 0, b);
+        setPwm(0, 0, Math.round(((color >> 16) & 0xFF)*4095/255));
+        setPwm(1, 0, Math.round(((color >> 8) & 0xFF)*4095/255));
+        setPwm(2, 0, Math.round(((color) & 0xFF)*4095/255));
     }
 }
