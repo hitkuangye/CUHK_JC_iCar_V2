@@ -42,7 +42,14 @@ namespace CUHK_JC_iCar {
         //% blockId="Car_SpinRight" block="SpinRight"
         Car_SpinRight = 7
     }
-    
+    enum singleWheel{
+        Left,
+        Right
+    }
+    enum direction{
+        Forward,
+        Backward
+    }
     function i2cwrite(addr: number, reg: number, value: number) {
         let buf = pins.createBuffer(2)
         buf[0] = reg
@@ -102,10 +109,10 @@ namespace CUHK_JC_iCar {
  *  MOVE *****************************************************************************************************************************
  ****************************************************************************************************************************************/
     
-    //% block   block="Move|%index| at speed %speed |\\%"
+    //% block="Move|%index| at speed %speed |\\%"
     //% speed.min=0 speed.max=100
     //% group="Move"
-    export function CarCtrlSpeed(index: CarState, speed: number): void {
+    export function carCtrlSpeed(index: CarState, speed: number): void {
         let spd = Math.round(pins.map(speed,0,100,350,4096))
         let pi12 = 0, pi13 = 0, pi14 = 0, pi15 = 0
         if (index == 1 || index == 4 || index == 7){
@@ -125,7 +132,33 @@ namespace CUHK_JC_iCar {
         setPwm(15, 0, pi14);
         setPwm(14, 0, pi15);
     }
- 
+    
+    //% block="Car Stop"
+    //% group="Move"
+    export function carStop(){
+      carCtrlSpeed(5,0)
+    }
+    
+    //% block="Move|%singleWheel| motor |%direction| at speed %speed |\\%"
+    //% speed.min=0 speed.max=100
+    //% group="Move"
+    export function singleTurn(singleWheel:singleWheel, direction: direction, speed: number): void {
+        if (singleWheel==0 && direction == 0){
+            carCtrlSpeed(4, speed)
+        } esle if (singleWheel==1 && direction == 0){
+            carCtrlSpeed(3, speed)
+        } else if (singleWheel==0 && direction == 1){
+            setPwm(12, 0, 0);
+            setPwm(13, 0, Math.round(pins.map(speed,0,100,350,4096)));
+            setPwm(15, 0, 0);
+            setPwm(14, 0, 0);           
+        } else {
+            setPwm(12, 0, 0);
+            setPwm(13, 0, 0);
+            setPwm(15, 0, Math.round(pins.map(speed,0,100,350,4096)));
+            setPwm(14, 0, 0);   
+        }
+    }
  /*****************************************************************************************************************************************
  *  Head Lights *****************************************************************************************************************************
  ****************************************************************************************************************************************/
