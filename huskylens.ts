@@ -201,30 +201,7 @@ namespace huskylens {
         protocolWriteCommand(protocolCommand.COMMAND_REQUEST)
         processReturn();
     }
-    /**
-     * HuskyLens get the number of the learned ID from result.
-     */
-    //%block="HuskyLens get a total number of learned IDs from the result"
-    //% weight=79
-    //% advanced=true
-    export function getIds(): number {
-        return Protocol_t[2];
-    }
-    /**
-     * The box or arrow HuskyLens got from result appears in screen?
-     */
-    //%block="HuskyLens check if %Ht is on screen from the result"
-    //% weight=78
-    export function isAppear_s(Ht: HUSKYLENSResultType_t): boolean {
-        switch (Ht) {
-            case 1:
-                return countBlocks_s() != 0 ? true:false;
-            case 2:
-                return countArrows_s() != 0 ? true:false;
-            default:
-                return false;
-        }
-    }
+    
     /**
      * HuskyLens get the parameter of box near the screen center from result.
      */
@@ -646,6 +623,30 @@ namespace huskylens {
             //while(!wait(protocolCommand.COMMAND_RETURN_OK));
        }
        basic.pause(500)
+    }
+    /**
+     * HuskyLens get the number of the learned ID from result.
+     */
+    //%block="HuskyLens get a total number of learned IDs from the result"
+    //% weight=79
+    //% advanced=true
+    export function getIds(): number {
+        return Protocol_t[2];
+    }
+    /**
+     * The box or arrow HuskyLens got from result appears in screen?
+     */
+    //%block="HuskyLens check if %Ht is on screen from the result"
+    //% weight=78
+    export function isAppear_s(Ht: HUSKYLENSResultType_t): boolean {
+        switch (Ht) {
+            case 1:
+                return countBlocks_s() != 0 ? true:false;
+            case 2:
+                return countArrows_s() != 0 ? true:false;
+            default:
+                return false;
+        }
     }
 
     function validateCheckSum() {
