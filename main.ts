@@ -183,7 +183,7 @@ namespace CUHK_JC_iCar {
  ****************************************************************************************************************************************/
     //% block="Run Horse Light"
     //% group="Breath Lights"
-    export function runFlowLight() { 
+    export function runHorseLight() { 
         for (let index = 0; index < 3; index++) {
             RGB_Car_Program().clear()
             RGB_Car_Program().setPixelColor(0, neopixel.colors(NeoPixelColors.Red))
