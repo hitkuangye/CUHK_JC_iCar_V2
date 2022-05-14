@@ -110,14 +110,14 @@ namespace CUHK_JC_iCar {
  *  MOVE *****************************************************************************************************************************
  ****************************************************************************************************************************************/
     //% block="Car Stop"
-    //% group="Move"
+    //% group="Move" blockGap=10
     export function carStop(){
       carCtrlSpeed(5,0)
     }
     
     //% block="Move|%singleWheel| motor |%direction| at speed %speed |\\%"
     //% speed.min=0 speed.max=100
-    //% group="Move"
+    //% group="Move" blockGap=10
     export function singleTurn(singleWheel:singleWheel, direction: direction, speed: number): void {
         if (singleWheel==0 && direction == 0){
             carCtrlSpeed(3, speed)
@@ -137,7 +137,7 @@ namespace CUHK_JC_iCar {
     }
     //% block="Move|%index| at speed %speed |\\%"
     //% speed.min=0 speed.max=100
-    //% group="Move"
+    //% group="Move" blockGap=10
     export function carCtrlSpeed(index: CarState, speed: number): void {
         spd = Math.round(pins.map(speed,0,100,350,4096))
         pi12 = 0
@@ -167,7 +167,7 @@ namespace CUHK_JC_iCar {
  ****************************************************************************************************************************************/
     //% block="Set Head Lights to $color"
     //% color.shadow="colorNumberPicker"
-    //% group="Head Lights"
+    //% group="Head Lights" blockGap=10
     export function setHeadColor(color: number) {
         setPwm(0, 0, Math.round(((color >> 16) & 0xFF)*4095/255));
         setPwm(1, 0, Math.round(((color >> 8) & 0xFF)*4095/255));
@@ -182,7 +182,7 @@ namespace CUHK_JC_iCar {
  *  Breath Lights *****************************************************************************************************************************
  ****************************************************************************************************************************************/
     //% block="Run Horse Light"
-    //% group="Breath Lights"
+    //% group="Breath Lights" blockGap=10
     export function runHorseLight() { 
         for (let index = 0; index < 3; index++) {
             RGB_Car_Program().clear()
@@ -197,7 +197,7 @@ namespace CUHK_JC_iCar {
         }
     }
     //% block="Run Flow Light"
-    //% group="Breath Lights"
+    //% group="Breath Lights" blockGap=10
     export function runFlowLight() {
         for (let index = 0; index < 3; index++) {
             for (let index = 0; index <= 2; index++) {
@@ -209,7 +209,7 @@ namespace CUHK_JC_iCar {
     }
     
     //% block="Run Breath Light"
-    //% group="Breath Lights"
+    //% group="Breath Lights" blockGap=10
     export function runBreathLight() {
         for (let index = 0; index <= 13; index++) {
             RGB_Car_Program().showColor(neopixel.rgb(0, index * 19, 0))
@@ -223,7 +223,7 @@ namespace CUHK_JC_iCar {
     
     //% block="Set Breath Lights to $color"
     //% color.shadow="colorNumberPicker"
-    //% group="Breath Lights"
+    //% group="Breath Lights" blockGap=10
     export function setBreathColor(color: number) {
         RGB_Car_Program().showColor(neopixel.rgb(((color >> 16) & 0xFF),((color >> 8) & 0xFF),((color) & 0xFF)*4095/255))
     } 
@@ -231,5 +231,28 @@ namespace CUHK_JC_iCar {
     //% group="Breath Lights"
     export function breathLightsOff() {
         RGB_Car_Program().clear()
+    }
+ 
+ /*****************************************************************************************************************************************
+ *  Ultrasonic Sensor *****************************************************************************************************************************
+ ****************************************************************************************************************************************/
+	//% block="ultrasonic return distance(cm)"
+    //% group="Ultrasonic Sensor" blockGap=10
+    export function Ultrasonic_Car(): number {
+        let d = 0
+        // send pulse   
+        let list:Array<number> = [0, 0, 0, 0, 0];
+        for (let i = 0; i < 5; i++) {
+            pins.setPull(DigitalPin.P14, PinPullMode.PullNone);
+		        pins.digitalWritePin(DigitalPin.P14, 0);
+		        control.waitMicros(2);
+		        pins.digitalWritePin(DigitalPin.P14, 1);
+		        control.waitMicros(15);
+		        pins.digitalWritePin(DigitalPin.P14, 0);
+		        d = pins.pulseIn(DigitalPin.P15, PulseValue.High, 43200);
+		        list[i] = Math.floor(d / 40)
+        }
+        list.sort();
+        return  Math.floor((list[1] + list[2] + list[3])/3);
     }
 }
