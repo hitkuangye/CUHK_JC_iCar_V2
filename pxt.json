@@ -15,7 +15,7 @@
         "_locales/zh-tw/Huskylens-strings.json",
         "shims.d.ts",
         "enums.d.ts",
-        "Bit_IR.cpp"
+       /* "Bit_IR.cpp"*/
     ],
     "testFiles": [
         "test.ts"
