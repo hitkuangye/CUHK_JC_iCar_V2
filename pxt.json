@@ -1,7 +1,8 @@
 {
-    "name": "Huskylens",
-    "version": "2.0.5",
+    "name": "CUHK_JC_ICar",
+    "version": "1.0.0",
     "description": "",
+    "license": "MIT",
     "dependencies": {
         "core": "*",
         "neopixel": "github:lzty634158/pxt-neopixel"
@@ -9,12 +10,10 @@
     "files": [
         "README.md",
         "huskylens.ts",
-        "main.ts",
-        "_locales/zh-cn/Huskylens-strings.json",
         "i2c.cpp",
-        "_locales/zh-tw/Huskylens-strings.json",
         "shims.d.ts",
         "enums.d.ts",
+        "main.ts",
         "ReceiverIR.cpp",
         "ReceiverIR.h",
         "RemoteIR.h",
@@ -23,10 +22,7 @@
     "testFiles": [
         "test.ts"
     ],
-    "targetVersions": {
-        "target": "4.0.16",
-        "targetId": "microbit"
-    },
+
     "supportedTargets": [
         "microbit"
     ],
