@@ -17,7 +17,7 @@
         "ReceiverIR.cpp",
         "ReceiverIR.h",
         "RemoteIR.h",
-        "Bit_IR.cpp"
+        "main.cpp"
     ],
     "testFiles": [
         "test.ts"
