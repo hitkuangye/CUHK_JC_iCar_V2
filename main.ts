@@ -526,6 +526,6 @@ namespace CUHK_JC_iCar {
     //% num.min=1 num.max=2 
     export function Servo_Car(num: enServo): void {
         setPwm(num + 2, 0, 0);
-    }
-	    
+    }	    
+}
 }
