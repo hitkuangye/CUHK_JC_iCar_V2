@@ -58,7 +58,7 @@ namespace CUHK_JC_iCar {
 	P4,
 	P5
     }
-    export enum state {
+    export enum onOffState {
 	on,
 	off
     }
@@ -494,16 +494,16 @@ namespace CUHK_JC_iCar {
  /*****************************************************************************************************************************************
  * Digital Write *****************************************************************************************************************************
  ****************************************************************************************************************************************/   	    
-    //% block="Pin |%pinNumber| device turns |%state|"
+    //% block="Pin |%pinNumber| device turns |%onOffState|"
     //% group="Switch" blockGap=10
-    export function digitalWrite(pinNumber: pinNumber, state: state): void {
+    export function digitalWrite(pinNumber: pinNumber, onOffState: onOffState): void {
 	if (pinNumber == 0){
-		if (state == 0){
+		if (onOffState == 0){
 			pins.digitalWritePin(DigitalPin.P4, 1)
 		} else {
 			pins.digitalWritePin(DigitalPin.P4, 0)
 		}
-	} else if(state == 0){
+	} else if(onOffState == 0){
 		pins.digitalWritePin(DigitalPin.P5, 1)
 	} else {
 		pins.digitalWritePin(DigitalPin.P5, 0)
