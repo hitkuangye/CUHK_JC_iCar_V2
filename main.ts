@@ -429,7 +429,7 @@ namespace CUHK_JC_iCar {
  /*****************************************************************************************************************************************
  *  Obstacle Sensor *****************************************************************************************************************************
  ****************************************************************************************************************************************/    	    
-   /* //% block="Is obstacle sensor |value %value ?"
+    //% block="Is obstacle sensor |value %value ?"
     //% group="Obstacle Sensor" blockGap=10
     export function Avoid_Sensor(value: enAvoidState): boolean {
         let temp: boolean = false;
@@ -466,11 +466,11 @@ namespace CUHK_JC_iCar {
         }
         pins.digitalWritePin(DigitalPin.P9, 1);
         return temp;
-    }*/
+    }
  /*****************************************************************************************************************************************
  * Digital Sensor *****************************************************************************************************************************
  ****************************************************************************************************************************************/   
-  /*  //% block="Pin |%pinNumber| returns digital reading"
+    //% block="Pin |%pinNumber| returns digital reading"
     //% group="Digital Sensor" blockGap=10
     export function digitalRead(pinNumber: pinNumber): number {
         if (pinNumber == 0) {
@@ -478,11 +478,11 @@ namespace CUHK_JC_iCar {
 	} else {
 		return(pins.digitalReadPin(DigitalPin.P5))
 	}
-    }*/
+    }
  /*****************************************************************************************************************************************
  * Analog Sensor *****************************************************************************************************************************
  ****************************************************************************************************************************************/   
-   /* //% block="Pin |%pinNumber| returns analog reading"
+    //% block="Pin |%pinNumber| returns analog reading"
     //% group="Analog Sensor" blockGap=10
     export function analogRead(pinNumber: pinNumber): number {
         if (pinNumber == 0) {
@@ -490,11 +490,11 @@ namespace CUHK_JC_iCar {
 	} else {
 		return(pins.analogReadPin(AnalogPin.P5))
 	}
-    }	*/
+    }	
  /*****************************************************************************************************************************************
  * Digital Write *****************************************************************************************************************************
  ****************************************************************************************************************************************/   	    
-   /* //% block="Pin |%pinNumber| device turns |%onOffState|"
+    //% block="Pin |%pinNumber| device turns |%onOffState|"
     //% group="Switch" blockGap=10
     export function digitalWrite(pinNumber: pinNumber, onOffState: onOffState): void {
 	if (pinNumber == 0){
@@ -508,11 +508,11 @@ namespace CUHK_JC_iCar {
 	} else {
 		pins.digitalWritePin(DigitalPin.P5, 0)
 	}
-    }*/
+    }
  /*****************************************************************************************************************************************
  * Servo *****************************************************************************************************************************
  ****************************************************************************************************************************************/   	   	    
-   /* //% block="Servo |num %num| turns to %value degrees"
+    //% block="Servo |num %num| turns to %value degrees"
     //% group="Servomotor" blockGap=10
     //% num.min=1 num.max=2 value.min=0 value.max=180
     export function servoAngle(num: enServo, value: number): void {
@@ -526,6 +526,6 @@ namespace CUHK_JC_iCar {
     //% num.min=1 num.max=2 
     export function servoStop(num: enServo): void {
         setPwm(num + 2, 0, 0);
-    }	 */ 
+    }	  
 
 }
