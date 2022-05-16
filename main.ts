@@ -66,7 +66,7 @@ namespace CUHK_JC_iCar {
         J1 = 1,
         J2
     }
-    export enum enIRButton {
+   /* export enum enIRButton {
         //% blockId="Up" block="Up"
         Up = 0x00,
         //% blockId="Light" block="Star"
@@ -101,7 +101,7 @@ namespace CUHK_JC_iCar {
         Eight = 0x14,
         //% blockId="Nine" block="Nine"
         Nine = 0x15,
-    }
+    }*/
     export enum enAvoidState {
         //% blockId="OBSTACLE" block="Blocked"
         OBSTACLE = 0,
