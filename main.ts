@@ -472,7 +472,7 @@ namespace CUHK_JC_iCar {
  ****************************************************************************************************************************************/   
     //% block="Pin |%pinNumber| returns digital reading"
     //% group="Digital Sensor" blockGap=10
-    export function digitalRead(pinNumber: pinNumber): void {
+    export function digitalRead(pinNumber: pinNumber): number {
         if (pinNumber == 0) {
 		return(pins.digitalReadPin(DigitalPin.P4))
 	} else {
@@ -484,7 +484,7 @@ namespace CUHK_JC_iCar {
  ****************************************************************************************************************************************/   
     //% block="Pin |%pinNumber| returns analog reading"
     //% group="Analog Sensor" blockGap=10
-    export function analogRead(pinNumber: pinNumber): void {
+    export function analogRead(pinNumber: pinNumber): number {
         if (pinNumber == 0) {
 		return(pins.analogReadPin(AnalogPin.P4))
 	} else {
@@ -515,7 +515,7 @@ namespace CUHK_JC_iCar {
     //% block="Servo |num %num| turns to %value degrees"
     //% group="Servomotor" blockGap=10
     //% num.min=1 num.max=2 value.min=0 value.max=180
-    export function Servo_Car(num: enServo, value: number): void {
+    export function servoAngle(num: enServo, value: number): void {
         // 50hz: 20,000 us
         let us = (value * 1800 / 180 + 600); // 0.6 ~ 2.4
         let pwm = us * 4096 / 20000;
@@ -524,7 +524,7 @@ namespace CUHK_JC_iCar {
     //% block="Servo |num %num| disable"
     //% group="Servomotor" blockGap=10
     //% num.min=1 num.max=2 
-    export function Servo_Car(num: enServo): void {
+    export function servoStop(num: enServo): void {
         setPwm(num + 2, 0, 0);
     }	    
 
