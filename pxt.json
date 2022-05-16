@@ -15,7 +15,10 @@
         "_locales/zh-tw/Huskylens-strings.json",
         "shims.d.ts",
         "enums.d.ts",
+        "ReceiverIR.cpp",
+        "ReceiverIR.h",
         "RemoteIR.h",
+        "Bit_IR.cpp"
     ],
     "testFiles": [
         "test.ts"
