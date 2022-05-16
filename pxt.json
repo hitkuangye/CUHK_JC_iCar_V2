@@ -5,6 +5,7 @@
     "dependencies": {
         "core": "*",
         "neopixel": "github:lzty634158/pxt-neopixel"
+        "background": "github:1010Technologies/pxt-makerbit-background#v1.0.1"
     },
     "files": [
         "README.md",
@@ -15,10 +16,6 @@
         "shims.d.ts",
         "enums.d.ts",
         "main.ts",
-        "ReceiverIR.cpp",
-        "ReceiverIR.h",
-        "RemoteIR.h",
-        "Bit_IR.cpp"
     ],
     "testFiles": [
         "test.ts"
