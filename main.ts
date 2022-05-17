@@ -7,7 +7,7 @@ Copyright (C): 2021-2030, The Chinese University of Hong Kong.
 //% groups='["Move","Head Lights","Breath Lights","Ultrasonic Sensor","Line Detector","Remote Control","Obstacle Sensor","Switch","Servomotor","Digital Sensor","Analog Sensor"]'
 namespace CUHK_JC_iCar {
 export class maints{
-    import {neopixel} from "./neopixel";
+    import * as neopixel from "./neopixel";
     let neopixel = new neopixel();
     const PCA9685_ADD = 0x41
     const MODE1 = 0x00
