@@ -2,7 +2,6 @@
 Copyright (C): 2021-2030, The Chinese University of Hong Kong.
 */
 
-import * as neopixel from "./neopixel"
 
 //% color="#006400" weight=20 icon="\uF646"
 //% groups='["Move","Head Lights","Breath Lights","Ultrasonic Sensor","Line Detector","Remote Control","Obstacle Sensor","Switch","Servomotor","Digital Sensor","Analog Sensor"]'
@@ -130,9 +129,9 @@ namespace CUHK_JC_iCar {
         buf[4] = (off >> 8) & 0xff;
         pins.i2cWriteBuffer(PCA9685_ADD, buf);
     }
-    function RGB_Car_Program(): neopixel.neopixel.Strip {
+    function RGB_Car_Program(): Strip {
         if (!yahStrip) {
-            yahStrip = neopixel.neopixel.create(DigitalPin.P16, 3, neopixel.neopixel.NeoPixelMode.RGB);
+            yahStrip = create(DigitalPin.P16, 3);
         }
         return yahStrip;  
     }
@@ -212,18 +211,130 @@ namespace CUHK_JC_iCar {
  /*****************************************************************************************************************************************
  *  Breath Lights *****************************************************************************************************************************
  ****************************************************************************************************************************************/
+    //% shim=sendBufferAsm
+    function sendBuffer(buf: Buffer, pin: DigitalPin) {
+    }
+    export class Strip {
+        buf: Buffer;
+        pin: DigitalPin;
+        // TODO: encode as bytes instead of 32bit
+        brightness: number;
+        start: number; // start offset in LED strip
+        _length: number; // number of LEDs
+        _matrixWidth: number; // number of leds in a matrix - if any
+        _matrixChain: number; // the connection type of matrix chain
+        _matrixRotation: number; // the rotation type of matrix
+
+        showColor(rgb: number) {
+            rgb = rgb >> 0;
+            this.setAllRGB(rgb);
+            this.show();
+        }
+        show() {
+            sendBuffer(this.buf, this.pin);
+        }
+
+        clear(): void {
+            this.buf.fill(0, this.start * 3, this._length * 3);
+        }
+
+        setBrightness(brightness: number): void {
+            this.brightness = brightness & 0xff;
+        }
+
+        setPin(pin: DigitalPin): void {
+            this.pin = pin;
+            pins.digitalWritePin(this.pin, 0);
+            // don't yield to avoid races on initialization
+        }
+        private setBufferRGB(offset: number, red: number, green: number, blue: number): void {
+
+            this.buf[offset + 0] = green;
+            this.buf[offset + 1] = red;
+            this.buf[offset + 2] = blue;
+        }
+        private setAllRGB(rgb: number) {
+            let red = unpackR(rgb);
+            let green = unpackG(rgb);
+            let blue = unpackB(rgb);
+
+            const br = this.brightness;
+            if (br < 255) {
+                red = (red * br) >> 8;
+                green = (green * br) >> 8;
+                blue = (blue * br) >> 8;
+            }
+            const end = this.start + this._length;
+            for (let i = this.start; i < end; ++i) {
+                this.setBufferRGB(i * 3, red, green, blue)
+            }
+        }
+        private setPixelRGB(pixeloffset: number, rgb: number): void {
+            if (pixeloffset < 0
+                || pixeloffset >= this._length)
+                return;
+
+            pixeloffset = (pixeloffset + this.start) * 3;
+
+            let red = unpackR(rgb);
+            let green = unpackG(rgb);
+            let blue = unpackB(rgb);
+
+            let br = this.brightness;
+            if (br < 255) {
+                red = (red * br) >> 8;
+                green = (green * br) >> 8;
+                blue = (blue * br) >> 8;
+            }
+            this.setBufferRGB(pixeloffset, red, green, blue)
+        }
+    }
+
+    export function create(pin: DigitalPin, numleds: number, ): Strip {
+        let strip = new Strip();
+        strip.buf = pins.createBuffer(numleds * 3);
+        strip.start = 0;
+        strip._length = numleds;
+        strip._matrixWidth = 0;
+        strip.setBrightness(255)
+        strip.setPin(pin)
+        return strip;
+    }
+
+    export function rgb(red: number, green: number, blue: number): number {
+        return packRGB(red, green, blue);
+    }
+
+    function packRGB(a: number, b: number, c: number): number {
+        return ((a & 0xFF) << 16) | ((b & 0xFF) << 8) | (c & 0xFF);
+    }
+    function unpackR(rgb: number): number {
+        let r = (rgb >> 16) & 0xFF;
+        return r;
+    }
+    function unpackG(rgb: number): number {
+        let g = (rgb >> 8) & 0xFF;
+        return g;
+    }
+    function unpackB(rgb: number): number {
+        let b = (rgb) & 0xFF;
+        return b;
+    }
+	
+	
+	
     //% block="Horse Light effect on"
     //% group="Breath Lights" blockGap=10
     export function runHorseLight() { 
         for (let index = 0; index < 3; index++) {
             RGB_Car_Program().clear()
-            RGB_Car_Program().setPixelColor(0, neopixel.neopixel.colors(neopixel.neopixel.NeoPixelColors.Red))
+            RGB_Car_Program().showColor(rgb(((0xFF0000 >> 16) & 0xFF),0,0))
             basic.pause(200)
             RGB_Car_Program().clear()
-            RGB_Car_Program().setPixelColor(1, neopixel.neopixel.colors(neopixel.neopixel.NeoPixelColors.Blue))
+            RGB_Car_Program().showColor(rgb(0,((0x00FF00 >> 8) & 0xFF),0))
             basic.pause(200)
             RGB_Car_Program().clear()
-            RGB_Car_Program().setPixelColor(3, neopixel.neopixel.colors(neopixel.neopixel.NeoPixelColors.Green))
+            RGB_Car_Program().showColor(rgb(0,0,(0x0000FF & 0xFF) * 4095 / 255)
             basic.pause(200)
         }
     }
@@ -233,7 +344,7 @@ namespace CUHK_JC_iCar {
         for (let index = 0; index < 3; index++) {
             for (let index = 0; index <= 2; index++) {
                 RGB_Car_Program().clear()
-                RGB_Car_Program().setPixelColor(index, neopixel.neopixel.colors(neopixel.neopixel.NeoPixelColors.Green))
+                RGB_Car_Program().showColor(rgb(0,((0x00FF00 >> 8) & 0xFF),0))
                 basic.pause(200)
             }
         }
@@ -243,11 +354,11 @@ namespace CUHK_JC_iCar {
     //% group="Breath Lights" blockGap=10
     export function runBreathLight() {
         for (let index = 0; index <= 13; index++) {
-            RGB_Car_Program().showColor(neopixel.neopixel.rgb(0, index * 19, 0))
+            RGB_Car_Program().showColor(rgb(0, index * 19, 0))
             basic.pause(100)
         }
         for (let index = 0; index <= 13; index++) {
-            RGB_Car_Program().showColor(neopixel.neopixel.rgb(0, 247 - index * 19, 0))
+            RGB_Car_Program().showColor(rgb(0, 247 - index * 19, 0))
             basic.pause(100)
         }
     }
@@ -256,7 +367,8 @@ namespace CUHK_JC_iCar {
     //% color.shadow="colorNumberPicker"
     //% group="Breath Lights" blockGap=10
     export function setBreathColor(color: number) {
-        RGB_Car_Program().showColor(neopixel.neopixel.rgb(((color >> 16) & 0xFF),((color >> 8) & 0xFF),((color) & 0xFF)*4095/255))
+        RGB_Car_Program().showColor(rgb(((color >> 16) & 0xFF),((color >> 8) & 0xFF),((color) & 0xFF)*4095/255))
+	    
     } 
     //% block="Breath lights turn Off"
     //% group="Breath Lights" blockGap=10
