@@ -4,7 +4,7 @@
     "description": "",
     "dependencies": {
         "core": "*",
-        "background": "github:lzty634158/pxt-neopixel"
+        "Neopixel": "github:lzty634158/pxt-neopixel"
     },
     "files": [
         "README.md",
