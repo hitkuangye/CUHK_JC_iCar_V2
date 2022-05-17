@@ -6,9 +6,6 @@ Copyright (C): 2021-2030, The Chinese University of Hong Kong.
 //% color="#006400" weight=20 icon="\uF646"
 //% groups='["Move","Head Lights","Breath Lights","Ultrasonic Sensor","Line Detector","Remote Control","Obstacle Sensor","Switch","Servomotor","Digital Sensor","Analog Sensor"]'
 namespace CUHK_JC_iCar {
-export class maints{
-    import * as neopixel from "./neopixel";
-    let neopixel = new neopixel();
     const PCA9685_ADD = 0x41
     const MODE1 = 0x00
     const MODE2 = 0x01
@@ -433,5 +430,5 @@ export class maints{
     export function servoStop(num: enServo): void {
         setPwm(num + 2, 0, 0);
     }	  
-}
+
 }
