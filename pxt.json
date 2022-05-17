@@ -4,7 +4,6 @@
     "description": "",
     "dependencies": {
         "core": "*",
-        "Neopixel": "github:lzty634158/pxt-neopixel"
     },
     "files": [
         "README.md",
@@ -14,7 +13,9 @@
         "i2c.cpp",
         "_locales/zh-tw/Huskylens-strings.json",
         "shims.d.ts",
-        "enums.d.ts"
+        "enums.d.ts",
+        "neopixel.ts",
+        "sendBuffer.asm",
     ],
     "testFiles": [
         "test.ts"
