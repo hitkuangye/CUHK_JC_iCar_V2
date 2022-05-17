@@ -602,3 +602,4 @@ namespace neopixel {
         Shortest
     }
 }
+export {Strip};
