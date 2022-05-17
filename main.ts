@@ -334,7 +334,7 @@ namespace CUHK_JC_iCar {
             RGB_Car_Program().showColor(rgb(0,((0x00FF00 >> 8) & 0xFF),0))
             basic.pause(200)
             RGB_Car_Program().clear()
-            RGB_Car_Program().showColor(rgb(0,0,(0x0000FF & 0xFF) * 4095 / 255)
+            RGB_Car_Program().showColor(rgb(0,0,(0x0000FF & 0xFF) * 4095 / 255))
             basic.pause(200)
         }
     }
