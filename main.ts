@@ -28,7 +28,7 @@ namespace CUHK_JC_iCar {
     const PRESCALE = 0xFE
 
     let initialized = false
-    let yahStrip: neopixel.neopixel.Strip;
+    let yahStrip: Strip;
     let pi12 = 0, pi13 = 0, pi14 = 0, pi15 = 0, spd = 0
     let irstate:number;
     let state:number;
