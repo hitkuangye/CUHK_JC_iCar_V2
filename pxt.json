@@ -14,6 +14,7 @@
         "_locales/zh-tw/Huskylens-strings.json",
         "shims.d.ts",
         "enums.d.ts",
+        "sendBuffer.asm"
     ],
     "testFiles": [
         "test.ts"
