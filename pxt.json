@@ -4,7 +4,7 @@
     "description": "",
     "dependencies": {
         "core": "*",
-        "IRReceiver":"https://github.com/1010Technologies/pxt-makerbit-ir-receiver.git"
+        "ir":"github:1010technologies/pxt-makerbit-ir-receiver"
     },
     "files": [
         "README.md",
