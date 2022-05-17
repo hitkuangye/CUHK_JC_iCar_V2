@@ -2,7 +2,7 @@
 Copyright (C): 2021-2030, The Chinese University of Hong Kong.
 */
 
-//% color="#006400" weight=20 icon="\uf5e4"
+//% color="#006400" weight=20 icon="\uf1d4"
 //% groups='["Move","Head Lights","Breath Lights","Ultrasonic Sensor","Line Detector","Remote Control","Obstacle Sensor","Switch","Servomotor","Digital Sensor","Analog Sensor"]'
 namespace CUHK_JC_iCar {
     const PCA9685_ADD = 0x41
