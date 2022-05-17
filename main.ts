@@ -2,10 +2,13 @@
 Copyright (C): 2021-2030, The Chinese University of Hong Kong.
 */
 
+import * as neopixel from "./neopixel"
 
 //% color="#006400" weight=20 icon="\uF646"
 //% groups='["Move","Head Lights","Breath Lights","Ultrasonic Sensor","Line Detector","Remote Control","Obstacle Sensor","Switch","Servomotor","Digital Sensor","Analog Sensor"]'
-namespace CUHK_JC_iCar {
+
+namespace CUHK_JC_iCar { 
+    
     const PCA9685_ADD = 0x41
     const MODE1 = 0x00
     const MODE2 = 0x01
@@ -26,7 +29,7 @@ namespace CUHK_JC_iCar {
     const PRESCALE = 0xFE
 
     let initialized = false
-    let yahStrip: neopixel.Strip;
+    let yahStrip: neopixel.neopixel.Strip;
     let pi12 = 0, pi13 = 0, pi14 = 0, pi15 = 0, spd = 0
     let irstate:number;
     let state:number;
@@ -127,9 +130,9 @@ namespace CUHK_JC_iCar {
         buf[4] = (off >> 8) & 0xff;
         pins.i2cWriteBuffer(PCA9685_ADD, buf);
     }
-    function RGB_Car_Program(): neopixel.Strip {
+    function RGB_Car_Program(): neopixel.neopixel.Strip {
         if (!yahStrip) {
-            yahStrip = neopixel.create(DigitalPin.P16, 3, NeoPixelMode.RGB);
+            yahStrip = neopixel.neopixel.create(DigitalPin.P16, 3, neopixel.neopixel.NeoPixelMode.RGB);
         }
         return yahStrip;  
     }
@@ -214,13 +217,13 @@ namespace CUHK_JC_iCar {
     export function runHorseLight() { 
         for (let index = 0; index < 3; index++) {
             RGB_Car_Program().clear()
-            RGB_Car_Program().setPixelColor(0, neopixel.colors(NeoPixelColors.Red))
+            RGB_Car_Program().setPixelColor(0, neopixel.neopixel.colors(neopixel.neopixel.NeoPixelColors.Red))
             basic.pause(200)
             RGB_Car_Program().clear()
-            RGB_Car_Program().setPixelColor(1, neopixel.colors(NeoPixelColors.Blue))
+            RGB_Car_Program().setPixelColor(1, neopixel.neopixel.colors(neopixel.neopixel.NeoPixelColors.Blue))
             basic.pause(200)
             RGB_Car_Program().clear()
-            RGB_Car_Program().setPixelColor(3, neopixel.colors(NeoPixelColors.Green))
+            RGB_Car_Program().setPixelColor(3, neopixel.neopixel.colors(neopixel.neopixel.NeoPixelColors.Green))
             basic.pause(200)
         }
     }
@@ -230,7 +233,7 @@ namespace CUHK_JC_iCar {
         for (let index = 0; index < 3; index++) {
             for (let index = 0; index <= 2; index++) {
                 RGB_Car_Program().clear()
-                RGB_Car_Program().setPixelColor(index, neopixel.colors(NeoPixelColors.Green))
+                RGB_Car_Program().setPixelColor(index, neopixel.neopixel.colors(neopixel.neopixel.NeoPixelColors.Green))
                 basic.pause(200)
             }
         }
@@ -240,11 +243,11 @@ namespace CUHK_JC_iCar {
     //% group="Breath Lights" blockGap=10
     export function runBreathLight() {
         for (let index = 0; index <= 13; index++) {
-            RGB_Car_Program().showColor(neopixel.rgb(0, index * 19, 0))
+            RGB_Car_Program().showColor(neopixel.neopixel.rgb(0, index * 19, 0))
             basic.pause(100)
         }
         for (let index = 0; index <= 13; index++) {
-            RGB_Car_Program().showColor(neopixel.rgb(0, 247 - index * 19, 0))
+            RGB_Car_Program().showColor(neopixel.neopixel.rgb(0, 247 - index * 19, 0))
             basic.pause(100)
         }
     }
@@ -253,7 +256,7 @@ namespace CUHK_JC_iCar {
     //% color.shadow="colorNumberPicker"
     //% group="Breath Lights" blockGap=10
     export function setBreathColor(color: number) {
-        RGB_Car_Program().showColor(neopixel.rgb(((color >> 16) & 0xFF),((color >> 8) & 0xFF),((color) & 0xFF)*4095/255))
+        RGB_Car_Program().showColor(neopixel.neopixel.rgb(((color >> 16) & 0xFF),((color >> 8) & 0xFF),((color) & 0xFF)*4095/255))
     } 
     //% block="Breath lights turn Off"
     //% group="Breath Lights" blockGap=10
