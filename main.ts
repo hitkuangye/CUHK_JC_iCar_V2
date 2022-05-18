@@ -108,8 +108,8 @@ namespace CUHK_JC_iCar{
     Number_0 = 0x98,
     //% block="#"
     Hash = 0xB0,
-    //% block="any"
-    Any = -1,
+    //% block=" "
+    Unused_4 = -4,
     //% block="▲"
     Up = 0x18,
     //% block=" "
@@ -124,9 +124,8 @@ namespace CUHK_JC_iCar{
     Unused_3 = -3,
     //% block="▼"
     Down = 0x4A,
-    //% block=" "
-    Unused_4 = -4,
-    
+    //% block="any"
+    Any = -1,
   }
   
   export const enum IrButtonAction {
@@ -213,7 +212,7 @@ namespace CUHK_JC_iCar{
     }
     
     //% block="iCar |%LRstate| motor |%direction| at speed %speed |\\%"
-    //% speed.min=1 speed.max=100
+    //% speed.min=1 speed.max=100 speed.defl=1
     //% group="Move" blockGap=10
     export function singleTurn(LRstate:LRstate, direction: direction, speed: number): void {
         if (LRstate==0 && direction == 0){
@@ -233,7 +232,7 @@ namespace CUHK_JC_iCar{
         }
     }
     //% block="iCar |%index| at speed %speed |\\%"
-    //% speed.min=1 speed.max=100
+    //% speed.min=1 speed.max=100 speed.defl=1
     //% group="Move" blockGap=10
     export function carCtrlSpeed(index: CarState, speed: number): void {
         spd = Math.round(pins.map(speed,0,100,350,4096))
@@ -262,13 +261,13 @@ namespace CUHK_JC_iCar{
  /*****************************************************************************************************************************************
  *  Headlights *****************************************************************************************************************************
  ****************************************************************************************************************************************/
-    //% block="iCar|_|Head|_|Lights turn OFF"
+    //% block="iCar_headlights turn OFF"
     //% group="Headlights" blockGap=10
     export function headLightsOff() {
         setHeadColor(0)
     }
 	
-    //% block="iCar|_|Head|_|Lights show $color"
+    //% block="iCar_headlights show $color"
     //% color.shadow="colorNumberPicker"
     //% group="Headlights" blockGap=10
     export function setHeadColor(color: number) {
