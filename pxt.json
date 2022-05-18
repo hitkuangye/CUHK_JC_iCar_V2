@@ -4,7 +4,7 @@
     "description": "",
     "dependencies": {
         "core": "*",
-        "background": "github:1010Technologies/pxt-makerbit-background#v1.0.1"
+        "background": "github:1010Technologies/pxt-makerbit-background#v1.0.1",
     },
     "files": [
         "README.md",
