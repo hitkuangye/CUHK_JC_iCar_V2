@@ -672,7 +672,6 @@ namespace CUHK_JC_iCar {
     //% blockId="makerbit_infrared_connect_receiver"
     //% block="Remote control receiver enable"
     //% group="Remote Cntrol" blockGap=10
-    //% weight=90
     export function connectIrReceiver(): void {
         let protocol = 0
         let pin = DigitalPin.P8
@@ -709,18 +708,12 @@ namespace CUHK_JC_iCar {
       }
     }
   
-    /**
-     * Do something when a specific button is pressed or released on the remote control.
-     * @param button the button to be checked
-     * @param action the trigger action
-     * @param handler body code to run when the event is raised
-     */
+
     //% blockId=makerbit_infrared_on_ir_button
     //% block="When remote control button | %button | is %action"
     //% button.fieldEditor="gridpicker"
     //% button.fieldOptions.columns=3
     //% button.fieldOptions.tooltips="false"
-    //% weight=50
     //% group="Remote Cntrol" blockGap=10
     export function onIrButton(
       button: IrButton,
