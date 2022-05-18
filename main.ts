@@ -709,9 +709,9 @@ namespace CUHK_JC_iCar {
     }
   
     //% block="When remote control button | %button | is %action"
-    //% button.fieldEditor="gridpicker"
+    /*//% button.fieldEditor="gridpicker"
     //% button.fieldOptions.columns=3
-    //% button.fieldOptions.tooltips="false"
+    //% button.fieldOptions.tooltips="false"*/
     //% group="Remote Cntrol" blockGap=10
     export function onIrButton(
       button: IrButton,
