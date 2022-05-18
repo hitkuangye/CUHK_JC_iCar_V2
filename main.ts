@@ -669,7 +669,6 @@ namespace CUHK_JC_iCar {
     /**
      * Connects to the IR receiver module at the specified pin and configures the IR protocol.
      */
-    //% blockId="makerbit_infrared_connect_receiver"
     //% block="Remote control receiver enable"
     //% group="Remote Cntrol" blockGap=10
     export function connectIrReceiver(): void {
@@ -708,8 +707,6 @@ namespace CUHK_JC_iCar {
       }
     }
   
-
-    //% blockId=makerbit_infrared_on_ir_button
     //% block="When remote control button | %button | is %action"
     //% button.fieldEditor="gridpicker"
     //% button.fieldOptions.columns=3
