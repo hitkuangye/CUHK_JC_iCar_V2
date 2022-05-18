@@ -262,13 +262,13 @@ namespace CUHK_JC_iCar{
  /*****************************************************************************************************************************************
  *  Headlights *****************************************************************************************************************************
  ****************************************************************************************************************************************/
-    //% block="iCar_Head_Lights turn OFF"
+    //% block="iCar|_|Head|_|Lights turn OFF"
     //% group="Headlights" blockGap=10
     export function headLightsOff() {
         setHeadColor(0)
     }
 	
-    //% block="iCar_Head_Lights show $color"
+    //% block="iCar|_|Head|_|Lights show $color"
     //% color.shadow="colorNumberPicker"
     //% group="Headlights" blockGap=10
     export function setHeadColor(color: number) {
@@ -390,14 +390,14 @@ namespace CUHK_JC_iCar{
         return b;
     }
    
-    //% block="Breath lights turn Off"
+    //% block="iCar|_|RGB|_|module turn OFF"
     //% group="RGB Module" blockGap=10
     export function breathLightsOff() {
         RGB_Car_Program().clear()
     }	
 	
 	
-    //% block="iCar_RGB_module show Marquee"
+    //% block="iCar|_|RGB|_|module show Marquee"
     //% group="RGB Module" blockGap=10
     export function runHorseLight() { 
         for (let index = 0; index < 3; index++) {
@@ -412,7 +412,7 @@ namespace CUHK_JC_iCar{
             basic.pause(200)
         }
     }
-    //% block="iCar_RGB_module show Flowing"
+    //% block="iCar|_|RGB|_|module show Flowing"
     //% group="RGB Module" blockGap=10
     export function runFlowLight() {
         for (let index = 0; index < 3; index++) {
@@ -424,7 +424,7 @@ namespace CUHK_JC_iCar{
         }
     }
     
-    //% block="iCar_RGB_module show Breathing"
+    //% block="iCar|_|RGB|_|module show Breathing"
     //% group="RGB Module" blockGap=10
     export function runBreathLight() {
         for (let index = 0; index <= 13; index++) {
@@ -437,7 +437,7 @@ namespace CUHK_JC_iCar{
         }
     }
     
-    //% block="iCar_RGB_module show $color"
+    //% block="iCar|_|RGB|_|module show $color"
     //% color.shadow="colorNumberPicker"
     //% group="RGB Module" blockGap=10
     export function setBreathColor(color: number) {
@@ -449,7 +449,7 @@ namespace CUHK_JC_iCar{
  /*****************************************************************************************************************************************
  *  Ultrasonic Sensor *****************************************************************************************************************************
  ****************************************************************************************************************************************/
-    //% block="iCar_ultrasonic_sensor get distance(cm)"
+    //% block="iCar|_|ultrasonic|_|sensor get distance(cm)"
     //% group="Ultrasonic Sensor" blockGap=10
     export function Ultrasonic_Car(): number {
         let d = 0
@@ -471,7 +471,7 @@ namespace CUHK_JC_iCar{
  /*****************************************************************************************************************************************
  *  Line Detector *****************************************************************************************************************************
  ****************************************************************************************************************************************/
-    //% block="is |%direct|iCar_line_detector %value ?"
+    //% block="is |%direct|iCar|_|line|_|detector %value ?"
     //% group="Line Detector" blockGap=10
     export function Line_Sensor(direct: enPos, value: enLineState): boolean {
         let temp: boolean = false;
@@ -676,7 +676,7 @@ function initIrState() {
     onIrDatagram: undefined,
   };
 }
-//% block="When iCar_remote_control button | %button | is %action"
+//% block="When iCar|_|remote|_|control button | %button | is %action"
 //% button.fieldEditor="gridpicker"
 //% button.fieldOptions.columns=3
 //% button.fieldOptions.tooltips="false"
@@ -694,7 +694,7 @@ export function onIrButton(button: IrButton, action: IrButtonAction, handler: ()
 /**
  * Connects to the IR receiver module at the specified pin and configures the IR protocol.
  */
-//% block="iCar_remote_control receiver turn ON"
+//% block="iCar|_|remote|_|control receiver turn ON"
 //% group="Remote Cntrol" blockGap=10
 export function connectIrReceiver(): void {
     let protocol = 0
@@ -788,7 +788,7 @@ function ir_rec_to16BitHex(value: number): string {
  /*****************************************************************************************************************************************
  *  Obstacle Sensor *****************************************************************************************************************************
  ****************************************************************************************************************************************/    	    
-    //% block="is iCar_obstacle_sensor |value %value ?"
+    //% block="is iCar|_|obstacle|_|sensor |%value ?"
     //% group="Obstacle Sensor" blockGap=10
     export function Avoid_Sensor(value: enAvoidState): boolean {
         let temp: boolean = false;
@@ -831,14 +831,14 @@ function ir_rec_to16BitHex(value: number): string {
  /*****************************************************************************************************************************************
  * Servo *****************************************************************************************************************************
  ****************************************************************************************************************************************/   	   	    
-    //% block="iCar_servomotor pin |num %num| turn OFF"
+    //% block="iCar_servomotor pin | %num| turn OFF"
     //% group="Pins" blockGap=10
     //% num.min=1 num.max=2 
     export function servoStop(num: enServo): void {
         setPwm(num + 2, 0, 0);
     }	
 	
-    //% block="iCar_servomotor write pin |num %num| to %value degree"
+    //% block="iCar_servomotor write pin | %num| to %value degree"
     //% group="Pins" blockGap=10
     //% num.min=1 num.max=2 value.min=0 value.max=180
     export function servoAngle(num: enServo, value: number): void {
