@@ -4,7 +4,7 @@
     "description": "",
     "dependencies": {
         "core": "*",
-        "ir":"github:1010technologies/pxt-makerbit-ir-receiver"
+        "background": "github:1010Technologies/pxt-makerbit-background#v1.0.1"
     },
     "files": [
         "README.md",
@@ -15,7 +15,8 @@
         "_locales/zh-tw/Huskylens-strings.json",
         "shims.d.ts",
         "enums.d.ts",
-        "sendBuffer.asm"
+        "sendBuffer.asm",
+        "infrared-receiver.ts",
     ],
     "testFiles": [
         "test.ts"
