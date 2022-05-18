@@ -52,9 +52,7 @@ namespace CUHK_JC_iCar{
         Right
     }
     export enum direction{
-        //% block="Move1 Forward"
 	Forward,
-	//% block="Move Backward"
         Backward
     }
     export enum enPos {
@@ -211,7 +209,7 @@ namespace CUHK_JC_iCar{
       carCtrlSpeed(5,0)
     }
     
-    //% block="iCar |%LRstate| motor |%direction| at speed %speed |\\%"
+    //% block="iCar |%LRstate| motor move |%direction| at speed %speed |\\%"
     //% speed.min=1 speed.max=100 speed.defl=1
     //% group="Move" blockGap=10
     export function singleTurn(LRstate:LRstate, direction: direction, speed: number): void {
