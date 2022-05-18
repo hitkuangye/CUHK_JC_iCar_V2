@@ -16,7 +16,6 @@
         "shims.d.ts",
         "enums.d.ts",
         "sendBuffer.asm",
-        "infrared-receiver.ts",
     ],
     "testFiles": [
         "test.ts"
