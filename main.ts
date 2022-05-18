@@ -76,7 +76,7 @@ namespace CUHK_JC_iCar {
         //% blockId="NOOBSTACLE" block="Unblocked"
         NOOBSTACLE = 1
     }
-    const enum IrButton {
+    export const enum IrButton {
     //% block="1"
     Number_1 = 0xA2,
     //% block="2"
@@ -122,7 +122,7 @@ namespace CUHK_JC_iCar {
     
   }
   
-  const enum IrButtonAction {
+  export const enum IrButtonAction {
     //% block="pressed"
     Pressed = 0,
     //% block="released"
@@ -709,13 +709,8 @@ function notifyIrEvents() {
 }
 
 //% block="When remote control button | %button | is %action"
-
 //% group="Remote Cntrol" blockGap=10
-export function onIrButton(
-  button: IrButton,
-  action: IrButtonAction,
-  handler: () => void
-) {
+export function onIrButton(button: IrButton, action: IrButtonAction, handler: () => void) {
   initIrState();
   if (action === IrButtonAction.Pressed) {
     irState.onIrButtonPressed.push(new IrButtonHandler(button, handler));
