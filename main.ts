@@ -52,7 +52,7 @@ namespace CUHK_JC_iCar{
         Right
     }
     export enum direction{
-        //% block="Move Forward"
+        //% block="Move1 Forward"
 	Forward,
 	//% block="Move Backward"
         Backward
