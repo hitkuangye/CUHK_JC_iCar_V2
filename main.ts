@@ -234,22 +234,10 @@ namespace CUHK_JC_iCar{
     //% group="Move" blockGap=10
     export function carCtrlSpeed(index: CarState, speed: number): void {
         spd = Math.round(pins.map(speed,0,100,350,4096))
-        pi12 = 0
-        pi13 = 0
-        pi14 = 0
-        pi15 = 0
-        if (index == 0 || index == 3 || index == 5){
-            pi12 = spd
-        }
-        if (index == 0 || index == 2 || index == 4){
-            pi15 = spd
-        }
-        if (index == 1 || index == 4){
-            pi13 = spd
-        }        
-        if (index == 1 || index == 5){
-            pi14 = spd
-        }   
+	pi12 = (index == 0 || index == 3 || index == 5)? spd:0
+	pi13 = (index == 1 || index == 4)? spd:0
+	pi14 = (index == 1 || index == 5)? spd:0
+	pi15 = (index == 0 || index == 2 || index == 4)? spd:0
         setPwm(12, 0, pi12);
         setPwm(13, 0, pi13);
         setPwm(15, 0, pi14);
