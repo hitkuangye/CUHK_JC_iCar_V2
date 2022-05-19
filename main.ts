@@ -75,6 +75,12 @@ namespace CUHK_JC_iCar{
         J1 = 1,
         J2
     }
+    export enum enAnalogPin {
+        J1 = 1,
+        J2,
+	P4,
+	P5
+    }
     export enum enAvoidState {
         //% blockId="OBSTACLE" block="Blocked"
         OBSTACLE = 0,
@@ -815,7 +821,22 @@ function ir_rec_to16BitHex(value: number): string {
 
  /*****************************************************************************************************************************************
  * Servo *****************************************************************************************************************************
- ****************************************************************************************************************************************/   	   	    
+ ****************************************************************************************************************************************/   	 
+    //% block="iCar analog write pin | %num| to %value "
+    //% group="Pins" blockGap=10
+    //% value.min=0 value.max=1023
+    export function servoAngle(num: enAnalogPin, value: number): void {
+	if (num<=2){
+		setPwm(num + 2, 0, Math.round(pins.map(value,0,1023,0,4096)));
+	} else if (num == 3){
+		pins.analogWritePin(AnalogPin.P4, value)
+	}
+	  else {
+	  	pins.analogWritePin(AnalogPin.P5, value)
+	  }
+    }	
+	
+	
     //% block="iCar_servomotor pin | %num| turn OFF"
     //% group="Pins" blockGap=10
     //% num.min=1 num.max=2 
