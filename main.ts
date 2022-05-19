@@ -68,8 +68,8 @@ namespace CUHK_JC_iCar{
 	P5
     }
     export enum onOffState {
-	HIGH,
-	LOW
+	High,
+	Low
     }
     export enum enServo {
         J1 = 1,
@@ -133,9 +133,9 @@ namespace CUHK_JC_iCar{
   }
   
   export const enum IrButtonAction {
-    //% block="PRESSED"
+    //% block="Pressed"
     Pressed = 0,
-    //% block="RELEASED"
+    //% block="Released"
     Released = 1,
   }
   
@@ -216,7 +216,7 @@ namespace CUHK_JC_iCar{
     }
     
     //% block="iCar |%LRstate| motor move |%direction| at speed %speed |\\%"
-    //% speed.min=1 speed.max=100 speed.defl=1
+    //% speed.min=0 speed.max=100 speed.defl=0
     //% group="Move" blockGap=10
     export function singleTurn(LRstate:LRstate, direction: direction, speed: number): void {
         if (LRstate==0 && direction == 0){
@@ -667,7 +667,7 @@ function initIrState() {
     onIrDatagram: undefined,
   };
 }
-//% block="When iCar|_|remote|_|control button | %button | is %action"
+//% block="when iCar|_|remote|_|control button | %button | is %action"
 //% button.fieldEditor="gridpicker"
 //% button.fieldOptions.columns=3
 //% button.fieldOptions.tooltips="false"
@@ -856,7 +856,7 @@ function ir_rec_to16BitHex(value: number): string {
  /*****************************************************************************************************************************************
  * Digital Write *****************************************************************************************************************************
  ****************************************************************************************************************************************/   	    
-    //% block="iCar digiral write pin |%pinNumber| to |%onOffState|"
+    //% block="iCar digital write pin |%pinNumber| to |%onOffState|"
     //% group="Pins" blockGap=10
     export function digitalWrite(pinNumber: pinNumber, onOffState: onOffState): void {
 	if (pinNumber == 0){
