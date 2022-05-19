@@ -825,7 +825,7 @@ function ir_rec_to16BitHex(value: number): string {
     //% block="iCar analog write pin | %num| to %value "
     //% group="Pins" blockGap=10
     //% value.min=0 value.max=1023
-    export function servoAngle(num: enAnalogPin, value: number): void {
+    export function analogPinWrite(num: enAnalogPin, value: number): void {
 	if (num<=2){
 		setPwm(num + 2, 0, Math.round(pins.map(value,0,1023,0,4096)));
 	} else if (num == 3){
