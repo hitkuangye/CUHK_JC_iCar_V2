@@ -699,8 +699,8 @@ export function connectIrReceiver(
     protocol: IrProtocol
   ): void {
    //export function connectIrReceiver(): void {
-  let protocol = 0
-  let pin = DigitalPin.P8
+  //let protocol = 0
+  //let pin = DigitalPin.P8
 
   initIrState();
 
