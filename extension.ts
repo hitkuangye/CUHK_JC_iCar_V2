@@ -5,7 +5,7 @@ namespace extension{
     /**
      * This is a statement block 
      */
-    //% block = "This is a testing block"
-    export function test() {
+    //% block="This is a testing block"
+    export function test(): void {
     }
 }
