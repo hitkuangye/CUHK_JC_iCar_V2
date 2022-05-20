@@ -697,11 +697,11 @@ if (irState.protocol) {
   return;
 }
 
-/*irState.protocol = protocol;
+irState.protocol = protocol;
 
 enableIrMarkSpaceDetection(pin);
 
-background.schedule(notifyIrEvents, background.Thread.Priority, background.Mode.Repeat, REPEAT_TIMEOUT_MS);
+/*background.schedule(notifyIrEvents, background.Thread.Priority, background.Mode.Repeat, REPEAT_TIMEOUT_MS);
 */}
 
 function notifyIrEvents() {
