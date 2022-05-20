@@ -133,7 +133,7 @@ enum protocolAlgorithm {
 }
 
 
-//% weight=25  color=#e7660b icon="\uf083"  block="CUHK-JC iCar HuskyLens"
+//% weight=25  color=#e7660 icon="\uf083"  block="CUHK-JC iCar HuskyLens"
 namespace huskylens {
     let protocolPtr: number[][] = [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]]
     let Protocol_t: number[] = [0, 0, 0, 0, 0, 0]
