@@ -685,9 +685,20 @@ else {
 /**
 * Connects to the IR receiver module at the specified pin and configures the IR protocol.
 */
-//% block="iCar remote control receiver turn ON"
-//% group="Remote Cntrol" blockGap=10
-export function connectIrReceiver(): void {
+// block="iCar remote control receiver turn ON"
+// group="Remote Cntrol" blockGap=10
+  
+//% blockId="makerbit_infrared_connect_receiver"
+//% block="connect IR receiver at pin %pin and decode %protocol"
+//% pin.fieldEditor="gridpicker"
+//% pin.fieldOptions.columns=4
+//% pin.fieldOptions.tooltips="false"
+//% weight=90
+export function connectIrReceiver(
+    pin: DigitalPin,
+    protocol: IrProtocol
+  ): void {
+   //export function connectIrReceiver(): void {
   let protocol = 0
   let pin = DigitalPin.P8
 
@@ -707,7 +718,7 @@ background.schedule(notifyIrEvents, background.Thread.Priority, background.Mode.
 function notifyIrEvents() {
 if (irState.activeCommand === -1) {
   // skip to save CPU cylces
-} /*else {
+} else {
   const now = input.runningTime();
   if (now > irState.repeatTimeout) {
     // repeat timed out
@@ -720,7 +731,7 @@ if (irState.activeCommand === -1) {
     irState.bitsReceived = 0;
     irState.activeCommand = -1;
   }
-}*/
+}
 }
 
 
