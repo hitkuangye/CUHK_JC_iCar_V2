@@ -4,7 +4,7 @@
     "description": "",
     "dependencies": {
         "core": "*",
-        "remote": "github:aenthchui/iCar_Remote_Control"
+        "remote": "github:aenthchui/iCar_Remote_Control#v1.5.14"
     },
     "files": [
         "README.md",
