@@ -72,12 +72,12 @@ High,
 Low
   }
   export enum enServo {
-      J1 = 1,
-      J2
+      J2 = 1,
+      J3
   }
   export enum enAnalogPin {
-      J1 = 1,
-      J2,
+      J2 = 1,
+      J3,
 P4,
 P5
   }
@@ -827,7 +827,7 @@ return hex;
   //% value.min=0 value.max=1023
   export function analogPinWrite(num: enAnalogPin, value: number): void {
 if (num<=2){
-  setPwm(num + 2, 0, Math.round(pins.map(value,0,1023,0,4096)));
+  setPwm(num + 3, 0, Math.round(pins.map(value,0,1023,0,4096)));
 } else if (num == 3){
   pins.analogWritePin(AnalogPin.P4, value)
 }
@@ -841,7 +841,7 @@ if (num<=2){
   //% group="Pins" blockGap=10
   //% num.min=1 num.max=2 
   export function servoStop(num: enServo): void {
-      setPwm(num + 2, 0, 0);
+      setPwm(num + 3, 0, 0);
   }	
 
   //% block="iCar servomotor write pin | %num| to %value degree"
@@ -851,7 +851,7 @@ if (num<=2){
       // 50hz: 20,000 us
       let us = (value * 1800 / 180 + 600); // 0.6 ~ 2.4
       let pwm = us * 4096 / 20000;
-      setPwm(num + 2, 0, pwm);
+      setPwm(num + 3, 0, pwm);
   }	
 /*****************************************************************************************************************************************
 * Digital Write *****************************************************************************************************************************
