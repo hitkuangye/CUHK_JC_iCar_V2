@@ -653,7 +653,7 @@ if (irState) {
 }
 
 irState = {
-  protocol: undefined,
+  protocol: 0,
   bitsReceived: 0,
   hasNewDatagram: false,
   addressSectionBits: 0,
