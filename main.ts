@@ -701,13 +701,13 @@ irState.protocol = protocol;
 
 enableIrMarkSpaceDetection(pin);
 
-/*background.schedule(notifyIrEvents, background.Thread.Priority, background.Mode.Repeat, REPEAT_TIMEOUT_MS);
-*/}
+background.schedule(notifyIrEvents, background.Thread.Priority, background.Mode.Repeat, REPEAT_TIMEOUT_MS);
+}
 
 function notifyIrEvents() {
 if (irState.activeCommand === -1) {
   // skip to save CPU cylces
-} else {
+} /*else {
   const now = input.runningTime();
   if (now > irState.repeatTimeout) {
     // repeat timed out
@@ -720,7 +720,7 @@ if (irState.activeCommand === -1) {
     irState.bitsReceived = 0;
     irState.activeCommand = -1;
   }
-}
+}*/
 }
 
 
