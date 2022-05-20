@@ -3,7 +3,7 @@ Copyright (C): 2021-2030, The Chinese University of Hong Kong.
 */
 
 
-//% color="#022169" weight=20 icon="\uf1b9"
+//% color="#022169" weight=20 icon="\uf1b9" block="CUHK-JC iCar"
 //% groups='["Move","Headlights","RGB Module","Ultrasonic Sensor","Line Detector","Remote Control","Obstacle Sensor","Pins"]'
 
 namespace CUHK_JC_iCar{ 
