@@ -7,7 +7,7 @@ Copyright (C): 2021-2030, The Chinese University of Hong Kong.
 //% groups='["Move","Headlights","RGB Module","Ultrasonic Sensor","Line Detector","Remote Control","Obstacle Sensor","Pins"]'
 
 namespace CUHK_JC_iCar{ 
-  declare var remote : any;
+  //declare var remote : any;
 
   const PCA9685_ADD = 0x41
   const MODE1 = 0x00
@@ -225,13 +225,13 @@ const enum IrProtocol {
           carCtrlSpeed(2, speed)
       } else if (LRstate==0 && direction == 1){
           setPwm(12, 0, 0);
-          setPwm(13, 0, Math.round(pins.map(speed,0,100,350,4096)));
+          setPwm(13, 0, Math.round(pins.map(speed,0,100,350,4095)));
           setPwm(15, 0, 0);
           setPwm(14, 0, 0);           
       } else {
           setPwm(12, 0, 0);
           setPwm(13, 0, 0);
-          setPwm(15, 0, Math.round(pins.map(speed,0,100,350,4096)));
+          setPwm(15, 0, Math.round(pins.map(speed,0,100,350,4095)));
           setPwm(14, 0, 0);   
       }
   }
@@ -239,15 +239,15 @@ const enum IrProtocol {
   //% speed.min=1 speed.max=100 speed.defl=1
   //% group="Move" blockGap=10
   export function carCtrlSpeed(index: CarState, speed: number): void {
-      spd = Math.round(pins.map(speed,0,100,350,4096))
-pi12 = (index == 0 || index == 3 || index == 5)? spd:0
-pi13 = (index == 1 || index == 4)? spd:0
-pi14 = (index == 1 || index == 5)? spd:0
-pi15 = (index == 0 || index == 2 || index == 4)? spd:0
+      spd = Math.round(pins.map(speed,0,100,350,4095))
+      pi12 = (index == 0 || index == 3 || index == 5)? spd:0
+      pi13 = (index == 1 || index == 4)? spd:0
+      pi14 = (index == 1 || index == 5)? spd:0
+      pi15 = (index == 0 || index == 2 || index == 4)? spd:0
       setPwm(12, 0, pi12);
       setPwm(13, 0, pi13);
-      setPwm(15, 0, pi14);
-      setPwm(14, 0, pi15);
+      setPwm(14, 0, pi14);
+      setPwm(15, 0, pi15);
   }
 
 /*****************************************************************************************************************************************
@@ -384,7 +384,7 @@ pi15 = (index == 0 || index == 2 || index == 4)? spd:0
   //% block="iCar RGB module turn OFF"
   //% group="RGB Module" blockGap=10
   export function breathLightsOff() {
-      RGB_Car_Program().clear()
+      RGB_Car_Program().showColor(rgb(0,0,0))
   }	
 
 
@@ -392,13 +392,10 @@ pi15 = (index == 0 || index == 2 || index == 4)? spd:0
   //% group="RGB Module" blockGap=10
   export function runHorseLight() { 
       for (let index = 0; index < 3; index++) {
-          RGB_Car_Program().clear()
           RGB_Car_Program().showColor(rgb(((0xFF0000 >> 16) & 0xFF),0,0))
           basic.pause(200)
-          RGB_Car_Program().clear()
           RGB_Car_Program().showColor(rgb(0,((0x00FF00 >> 8) & 0xFF),0))
           basic.pause(200)
-          RGB_Car_Program().clear()
           RGB_Car_Program().showColor(rgb(0,0,(0x0000FF & 0xFF) * 4095 / 255))
           basic.pause(200)
       }
@@ -601,17 +598,18 @@ if (num<=2){
   //% block="iCar digital write pin |%pinNumber| to |%onOffState|"
   //% group="Pins" blockGap=10
   export function digitalWrite(pinNumber: pinNumber, onOffState: onOffState): void {
-if (pinNumber == 0){
-  if (onOffState == 0){
-    pins.digitalWritePin(DigitalPin.P4, 1)
-  } else {
-    pins.digitalWritePin(DigitalPin.P4, 0)
-  }
-} else if(onOffState == 0){
-  pins.digitalWritePin(DigitalPin.P5, 1)
-} else {
-  pins.digitalWritePin(DigitalPin.P5, 0)
-}
+  if (pinNumber == 0){
+     led.enable(false)
+     if (onOffState == 0){
+       pins.digitalWritePin(DigitalPin.P4, 1)
+     } else {
+       pins.digitalWritePin(DigitalPin.P4, 0)
+     }
+   } else if(onOffState == 0){
+     pins.digitalWritePin(DigitalPin.P5, 1)
+   } else {
+     pins.digitalWritePin(DigitalPin.P5, 0)
+   }
   }
 /*****************************************************************************************************************************************
 * digital read *****************************************************************************************************************************
