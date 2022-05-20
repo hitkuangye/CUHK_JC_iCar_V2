@@ -540,7 +540,7 @@ class IrButtonHandler {
 }
 
 
-function appendBitToDatagram(bit: number): number {
+export function appendBitToDatagram(bit: number): number {
   irState.bitsReceived += 1;
 
   if (irState.bitsReceived <= 8) {
@@ -567,7 +567,7 @@ function appendBitToDatagram(bit: number): number {
   }
 }
 
-function decode(markAndSpace: number): number {
+export function decode(markAndSpace: number): number {
   if (markAndSpace < 1600) {
     // low bit
     return appendBitToDatagram(0);
@@ -589,7 +589,7 @@ function decode(markAndSpace: number): number {
   }
 }
 
-function enableIrMarkSpaceDetection(pin: DigitalPin) {
+export function enableIrMarkSpaceDetection(pin: DigitalPin) {
   pins.setPull(pin, PinPullMode.PullNone);
 
   let mark = 0;
@@ -611,7 +611,7 @@ function enableIrMarkSpaceDetection(pin: DigitalPin) {
   });
 }
 
-function handleIrEvent(irEvent: number) {
+export function handleIrEvent(irEvent: number) {
 
   // Refresh repeat timer
   if (irEvent === IR_DATAGRAM || irEvent === IR_REPEAT) {
@@ -647,7 +647,7 @@ function handleIrEvent(irEvent: number) {
   }
 }
 
-function initIrState() {
+export function initIrState() {
   if (irState) {
     return;
   }
@@ -690,7 +690,7 @@ export function connectIrReceiver(
   background.schedule(notifyIrEvents, background.Thread.Priority, background.Mode.Repeat, REPEAT_TIMEOUT_MS);
 }
 
-function notifyIrEvents() {
+export function notifyIrEvents() {
   if (irState.activeCommand === -1) {
     // skip to save CPU cylces
   } else {
@@ -764,12 +764,12 @@ export function wasIrDataReceived(): boolean {
   }
 }
 
-export function irButtonCode(button: IrButton): number {
+export function irButtonCode(): number {
   basic.pause(0); // Yield to support background processing when called in tight loops
-  return button as number;
+  return 0 as number;
 }
 
-function ir_rec_to16BitHex(value: number): string {
+export function ir_rec_to16BitHex(value: number): string {
   let hex = "";
   for (let pos = 0; pos < 4; pos++) {
     let remainder = value % 16;
