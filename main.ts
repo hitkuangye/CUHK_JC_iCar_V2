@@ -7,7 +7,7 @@ Copyright (C): 2021-2030, The Chinese University of Hong Kong.
 //% groups='["Move","Headlights","RGB Module","Ultrasonic Sensor","Line Detector","Remote Control","Obstacle Sensor","Pins"]'
 
 namespace CUHK_JC_iCar{ 
-  declare var background: any;
+  declare var : any;
 
   const PCA9685_ADD = 0x41
   const MODE1 = 0x00
