@@ -653,7 +653,7 @@ if (irState) {
 }
 
 irState = {
-  protocol: 0,
+  protocol: undefined,
   bitsReceived: 0,
   hasNewDatagram: false,
   addressSectionBits: 0,
@@ -697,12 +697,12 @@ if (irState.protocol) {
   return;
 }
 
-irState.protocol = protocol;
+/*irState.protocol = protocol;
 
 enableIrMarkSpaceDetection(pin);
 
 background.schedule(notifyIrEvents, background.Thread.Priority, background.Mode.Repeat, REPEAT_TIMEOUT_MS);
-}
+*/}
 
 function notifyIrEvents() {
 if (irState.activeCommand === -1) {
