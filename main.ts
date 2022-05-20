@@ -8,7 +8,7 @@ Copyright (C): 2021-2030, The Chinese University of Hong Kong.
 
 namespace CUHK_JC_iCar{ 
   //declare var remote : any;
-
+  let remote = remote.IrButtonHandler()
   const PCA9685_ADD = 0x41
   const MODE1 = 0x00
   const MODE2 = 0x01
