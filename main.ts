@@ -12,19 +12,19 @@ namespace CUHK_JC_iCar{
   const PCA9685_ADD = 0x41
   const MODE1 = 0x00
   const MODE2 = 0x01
-  const SUBADR1 = 0x02
+ /* const SUBADR1 = 0x02
   const SUBADR2 = 0x03
-  const SUBADR3 = 0x04
+  const SUBADR3 = 0x04*/
 
   const LED0_ON_L = 0x06
-  const LED0_ON_H = 0x07
+ /* const LED0_ON_H = 0x07
   const LED0_OFF_L = 0x08
   const LED0_OFF_H = 0x09
 
   const ALL_LED_ON_L = 0xFA
   const ALL_LED_ON_H = 0xFB
   const ALL_LED_OFF_L = 0xFC
-  const ALL_LED_OFF_H = 0xFD
+  const ALL_LED_OFF_H = 0xFD*/
 
   const PRESCALE = 0xFE
 
