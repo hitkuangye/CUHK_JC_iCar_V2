@@ -845,7 +845,7 @@ irState.protocol = protocol;
 
 enableIrMarkSpaceDetection(pin);
 
-makerbit.schedule(notifyIrEvents, makerbit.Thread.Priority, makerbit.Mode.Repeat, REPEAT_TIMEOUT_MS);
+schedule(notifyIrEvents, Thread.Priority, Mode.Repeat, REPEAT_TIMEOUT_MS);
 }
 
 function notifyIrEvents() {
@@ -858,7 +858,7 @@ if (irState.activeCommand === -1) {
 
     const handler = irState.onIrButtonReleased.find(h => h.irButton === irState.activeCommand || IrButton.Any === h.irButton);
     if (handler) {
-      makerbit.schedule(handler.onEvent, makerbit.Thread.UserCallback, makerbit.Mode.Once, 0);
+      schedule(handler.onEvent, Thread.UserCallback, Mode.Once, 0);
     }
 
     irState.bitsReceived = 0;
