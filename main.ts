@@ -619,7 +619,7 @@ if (irEvent === IR_DATAGRAM) {
   irState.hasNewDatagram = true;
 
   if (irState.onIrDatagram) {
-    background.schedule(irState.onIrDatagram, background.Thread.UserCallback, background.Mode.Once, 0);
+    makerbit.schedule(irState.onIrDatagram, makerbit.Thread.UserCallback, makerbit.Mode.Once, 0);
   }
 
   const newCommand = irState.commandSectionBits >> 8;
@@ -630,13 +630,13 @@ if (irEvent === IR_DATAGRAM) {
     if (irState.activeCommand >= 0) {
       const releasedHandler = irState.onIrButtonReleased.find(h => h.irButton === irState.activeCommand || IrButton.Any === h.irButton);
       if (releasedHandler) {
-        background.schedule(releasedHandler.onEvent, background.Thread.UserCallback, background.Mode.Once, 0);
+        makerbit.schedule(releasedHandler.onEvent, makerbit.Thread.UserCallback, makerbit.Mode.Once, 0);
       }
     }
 
     const pressedHandler = irState.onIrButtonPressed.find(h => h.irButton === newCommand || IrButton.Any === h.irButton);
     if (pressedHandler) {
-      background.schedule(pressedHandler.onEvent, background.Thread.UserCallback, background.Mode.Once, 0);
+      makerbit.schedule(pressedHandler.onEvent, makerbit.Thread.UserCallback, makerbit.Mode.Once, 0);
     }
 
     irState.activeCommand = newCommand;
