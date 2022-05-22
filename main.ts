@@ -507,13 +507,13 @@ const enum IrProtocol {
    //% button.fieldOptions.tooltips="false"
    //% group="Remote Cntrol" blockGap=10
    export function buttonChoice(button: IrButton, action: IrButtonAction, handler: () => void) {
-     remote.onIrButton(button, action)
+     makerbit.onIrButton(button, action)
    }  
 
    //% block="iCar remote control receiver turn ON"
    //% group="Remote Cntrol" blockGap=10
    export function connectRemote(): void {
-      remote.connectIrReceiver(DigitalPin.P8, 0)
+      makerbit.connectIrReceiver(DigitalPin.P8, 0)
    }
 /*****************************************************************************************************************************************
 *  Obstacle Sensor *****************************************************************************************************************************
