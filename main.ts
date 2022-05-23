@@ -1058,7 +1058,4 @@ namespace CUHK_JC_iCar {
     }
   }
 }
-© 2022 GitHub, Inc.
-Terms
-Privacy
-Security
+
