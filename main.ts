@@ -1,14 +1,11 @@
 /*
-Copyright (C): 2021-2030, The Chinese University of Hong Kong.
+Copyright (C): 2019-2026, The Chinese University of Hong Kong.
 */
-
 
 //% color="#022169" weight=20 icon="\uf1b9" block="CUHK-JC iCar"
 //% groups='["Move","Headlights","RGB Module","Ultrasonic Sensor","Line Detector","Remote Control","Obstacle Sensor","Pins"]'
 
 namespace CUHK_JC_iCar {
-  //declare var remote : any;
-  //let remote = remote.IrButtonHandler()
   const PCA9685_ADD = 0x41
   const MODE1 = 0x00
   const MODE2 = 0x01
@@ -208,12 +205,18 @@ namespace CUHK_JC_iCar {
   /*****************************************************************************************************************************************
   *  MOVE *****************************************************************************************************************************
   ****************************************************************************************************************************************/
+  /**
+   * Stop iCar immediately
+   */
   //% block="iCar Stop"
   //% group="Move" blockGap=10
   export function carStop() {
     carCtrlSpeed(5, 0)
   }
 
+  /**
+  * Move iCar's individual motor forward or backward at speed(0-100%)
+  */
   //% block="iCar |%LRstate| motor move |%direction| at speed %speed |\\%"
   //% speed.min=0 speed.max=100 speed.defl=0
   //% group="Move" blockGap=10
@@ -234,6 +237,10 @@ namespace CUHK_JC_iCar {
       setPwm(14, 0, 0);
     }
   }
+
+  /**
+   * Move iCar forward or backward at speed(1-100%)
+   */
   //% block="iCar |%index| at speed %speed |\\%"
   //% speed.min=1 speed.max=100 speed.defl=1
   //% group="Move" blockGap=10
@@ -252,12 +259,18 @@ namespace CUHK_JC_iCar {
   /*****************************************************************************************************************************************
   *  Headlights *****************************************************************************************************************************
   ****************************************************************************************************************************************/
+   /**
+   * Turn iCar's headlights off
+   */ 
   //% block="iCar headlights turn OFF"
   //% group="Headlights" blockGap=10
   export function headLightsOff() {
     setHeadColor(0)
   }
 
+   /**
+   * Set iCar's headlights to selected color
+   */ 
   //% block="iCar headlights show $color"
   //% color.shadow="colorNumberPicker"
   //% group="Headlights" blockGap=10
@@ -379,14 +392,18 @@ namespace CUHK_JC_iCar {
     let b = (rgb) & 0xFF;
     return b;
   }
-
+  /**
+  * Turn iCar's RGB module off
+  */
   //% block="iCar RGB module turn OFF"
   //% group="RGB Module" blockGap=10
   export function breathLightsOff() {
     RGB_Car_Program().showColor(rgb(0, 0, 0))
   }
 
-
+  /**
+  * Set iCar's RGB module to show Marquee effect once
+  */
   //% block="iCar RGB module show Marquee"
   //% group="RGB Module" blockGap=10
   export function runHorseLight() {
@@ -399,6 +416,9 @@ namespace CUHK_JC_iCar {
       basic.pause(200)
     }
   }
+  /**
+  * Set iCar's RGB module to show Flowing effect once
+  */
   //% block="iCar RGB module show Flowing"
   //% group="RGB Module" blockGap=10
   export function runFlowLight() {
@@ -410,7 +430,9 @@ namespace CUHK_JC_iCar {
       }
     }
   }
-
+  /**
+  * Set iCar's RGB module to show Breathing effect once
+  */
   //% block="iCar RGB module show Breathing"
   //% group="RGB Module" blockGap=10
   export function runBreathLight() {
@@ -423,7 +445,9 @@ namespace CUHK_JC_iCar {
       basic.pause(100)
     }
   }
-
+  /**
+  * Set iCar's RGB module to selected color
+  */ 
   //% block="iCar RGB module show $color"
   //% color.shadow="colorNumberPicker"
   //% group="RGB Module" blockGap=10
@@ -436,6 +460,9 @@ namespace CUHK_JC_iCar {
   /*****************************************************************************************************************************************
   *  Ultrasonic Sensor *****************************************************************************************************************************
   ****************************************************************************************************************************************/
+  /**
+  * iCar get the reading of ultrasonic sensor
+  */ 
   //% block="iCar ultrasonic sensor get distance(cm)"
   //% group="Ultrasonic Sensor" blockGap=10
   export function Ultrasonic_Car(): number {
@@ -458,6 +485,9 @@ namespace CUHK_JC_iCar {
   /*****************************************************************************************************************************************
   *  Line Detector *****************************************************************************************************************************
   ****************************************************************************************************************************************/
+  /**
+  * The line detector at one side is blocked or not?
+  */ 
   //% block="is |%direct|iCar line detector %value ?"
   //% group="Line Detector" blockGap=10
   export function Line_Sensor(direct: enPos, value: enLineState): boolean {
@@ -810,6 +840,9 @@ namespace CUHK_JC_iCar {
       onIrDatagram: undefined,
     };
   }
+  /**
+   * iCar do something when a button on remote control is pressed or released
+   */
   //% block="when iCar remote control button | %button | is %action"
   //% button.fieldEditor="gridpicker"
   //% button.fieldOptions.columns=3
@@ -826,7 +859,7 @@ namespace CUHK_JC_iCar {
   }
 
   /**
-  * Connects to the IR receiver module at the specified pin and configures the IR protocol.
+  * iCar initialize the remote control receiver
   */
   //% block="iCar remote control receiver turn ON"
   //% group="Remote Cntrol" blockGap=10
@@ -922,6 +955,9 @@ namespace CUHK_JC_iCar {
   /*****************************************************************************************************************************************
   *  Obstacle Sensor *****************************************************************************************************************************
   ****************************************************************************************************************************************/
+  /**
+  * The obstacle sensor is blocked or not?
+  */
   //% block="is iCar obstacle sensor |%value ?"
   //% group="Obstacle Sensor" blockGap=10
   export function Avoid_Sensor(value: enAvoidState): boolean {
@@ -965,6 +1001,9 @@ namespace CUHK_JC_iCar {
   /*****************************************************************************************************************************************
   * Servo *****************************************************************************************************************************
   ****************************************************************************************************************************************/
+  /**
+  * iCar analog write P4 or P5 to 0-1023 
+  */
   //% block="iCar analog write pin | %num| to %value "
   //% group="Pins" blockGap=10
   //% value.min=0 value.max=1023
@@ -978,15 +1017,18 @@ namespace CUHK_JC_iCar {
       pins.analogWritePin(AnalogPin.P5, value)
     }
   }
-
-
+  /**
+  * Turn iCar's servomotor at J2 or J3 off 
+  */
   //% block="iCar servomotor pin | %num| turn OFF"
   //% group="Pins" blockGap=10
   //% num.min=1 num.max=2 
   export function servoStop(num: enServo): void {
     setPwm(num + 3, 0, 0);
   }
-
+  /**
+  * Move iCar's servomotor at J2 or J3 to degree 
+  */
   //% block="iCar servomotor write pin | %num| to %value degree"
   //% group="Pins" blockGap=10
   //% num.min=1 num.max=2 value.min=0 value.max=180
@@ -999,6 +1041,9 @@ namespace CUHK_JC_iCar {
   /*****************************************************************************************************************************************
   * Digital Write *****************************************************************************************************************************
   ****************************************************************************************************************************************/
+  /**
+  * iCar digital write P4 or P5 to on or off 
+  */
   //% block="iCar digital write pin |%pinNumber| to |%onOffState|"
   //% group="Pins" blockGap=10
   export function digitalWrite(pinNumber: pinNumber, onOffState: onOffState): void {
@@ -1018,6 +1063,9 @@ namespace CUHK_JC_iCar {
   /*****************************************************************************************************************************************
   * digital read *****************************************************************************************************************************
   ****************************************************************************************************************************************/
+  /**
+  * iCar digital read P4 or P5's state
+  */
   //% block="iCar digital read pin |%pinNumber| "
   //% group="Pins" blockGap=10
   export function digitalRead(pinNumber: pinNumber): number {
