@@ -9,14 +9,13 @@
         "README.md",
         "huskylens.ts",
         "main.ts",
-        "_locales/zh-cn/Huskylens-strings.json",
         "i2c.cpp",
-        "_locales/zh-tw/Huskylens-strings.json",
+        "_locales/zh/Huskylens-strings.json",
         "shims.d.ts",
         "enums.d.ts",
         "sendBuffer.asm",
         "_locales/de/MakerBit-IR-Receiver-strings.json",
-        "_locales/zh-tw/CUHK_JC_iCar-strings.json",
+        "_locales/zh/CUHK_JC_iCar-strings.json",
         "extension.ts"
     ],
     "testFiles": [
