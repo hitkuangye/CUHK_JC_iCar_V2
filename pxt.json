@@ -15,7 +15,7 @@
         "enums.d.ts",
         "sendBuffer.asm",
         "_locales/de/MakerBit-IR-Receiver-strings.json",
-        "_locales/zh-tw/CUHK_JC_iCar-strings.json",
+        "_locales/zh-tw/iCar-strings.json",
         "extension.ts"
     ],
     "testFiles": [
