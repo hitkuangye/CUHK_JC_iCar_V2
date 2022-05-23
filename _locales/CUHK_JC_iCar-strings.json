@@ -1,0 +1,8 @@
+{
+    "CUHK_JC_iCar.carStop|block":"iCar Stop",
+    "CUHK_JC_iCar.singleTurn|block":"iCar |%LRstate| motor move |%direction| at speed %speed |\\%",
+    "CUHK_JC_iCar.LRstate.Left|block":"Left",
+    "CUHK_JC_iCar.LRstate.Right|block":"Right",
+    "CUHK_JC_iCar.direction.Forward|block":"Forward",
+    "CUHK_JC_iCar.LRstate.Backward|block":"Backward"
+}
