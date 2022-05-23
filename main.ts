@@ -3,6 +3,7 @@ Copyright (C): 2019-2026, The Chinese University of Hong Kong.
 */
 
 //% color="#022169" weight=20 icon="\uf1b9" block="CUHK-JC iCar"
+//% groups.loc.zh-tw = '["移動","車頭燈","RGB模組","超聲波感應器","線感應器","遙控器","避障感應器","引腳"]'
 //% groups='["Move","Headlights","RGB Module","Ultrasonic Sensor","Line Detector","Remote Control","Obstacle Sensor","Pins"]'
 
 namespace CUHK_JC_iCar {
@@ -50,14 +51,18 @@ namespace CUHK_JC_iCar {
     SpinRight
   }
   export enum LRstate {
+    //% block="Left"
     //% block.loc.zh-tw="左"
     Left,
+    //% block="Right"
     //% block.loc.zh-tw="右"
     Right
   }
   export enum direction {
+    //% block="Forward"
     //% block.loc.zh-tw="前"
     Forward,
+    //% block="Backward"
     //% block.loc.zh-tw="左"
     Backward
   }
@@ -228,7 +233,7 @@ namespace CUHK_JC_iCar {
   * Move iCar's individual motor forward or backward at speed(0-100%)
   */
   //% block="iCar |%LRstate| motor move |%direction| at speed %speed |\\%"
-  //% block.loc.zh-tw="iCar|%LRstate| 馬達以%speed |\\%速度向|%direction|轉"
+  //% block.loc.zh-tw="iCar|%LRstate| 馬達以%speed |\\% 速度向|%direction|行"
   //% speed.min=0 speed.max=100 speed.defl=0
   //% group="Move" blockGap=10
   export function singleTurn(LRstate: LRstate, direction: direction, speed: number): void {
@@ -253,6 +258,7 @@ namespace CUHK_JC_iCar {
    * Move iCar forward or backward at speed(1-100%)
    */
   //% block="iCar |%index| at speed %speed |\\%"
+  //% block.loc.zh-tw="iCar 以%speed|\\% 速度向|%index|行"
   //% speed.min=1 speed.max=100 speed.defl=1
   //% group="Move" blockGap=10
   export function carCtrlSpeed(index: CarState, speed: number): void {
