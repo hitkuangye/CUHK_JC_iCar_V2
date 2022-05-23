@@ -4,7 +4,7 @@ Copyright (C): 2019-2026, The Chinese University of Hong Kong.
 
 //% color="#022169" weight=20 icon="\uf1b9" block="CUHK-JC iCar"
 //% groups='["Move","Headlights","RGB Module","Ultrasonic Sensor","Line Detector","Remote Control","Obstacle Sensor","Pins"]'
-//% groups.loc.zh-tw = '["移動","車頭燈","RGB模組","超聲波感應器","線感應器","遙控器","避障感應器","引腳"]'
+//% group.loc.zh-tw = '["移動","車頭燈","RGB模組","超聲波感應器","線感應器","遙控器","避障感應器","引腳"]'
 
 namespace CUHK_JC_iCar {
   const PCA9685_ADD = 0x41
@@ -225,6 +225,7 @@ namespace CUHK_JC_iCar {
   //% block="iCar Stop"
   //% block.loc.zh-tw="iCar停車"
   //% group="Move" blockGap=10
+  //% group.loc.zh-tw = "移動"
   export function carStop() {
     carCtrlSpeed(6, 0)
   }
