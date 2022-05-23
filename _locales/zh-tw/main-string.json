@@ -4,5 +4,5 @@
     "CUHK_JC_iCar.LRstate.Left|block":"左",
     "CUHK_JC_iCar.LRstate.Right|block":"右",
     "CUHK_JC_iCar.direction.Forward|block":"前",
-    "CUHK_JC_iCar.LRstate.Backward|block":"後"
+    "CUHK_JC_iCar.direction.Backward|block":"後"
 }
