@@ -11,7 +11,7 @@
  * @author [email](jie.tang@dfrobot.com)
  * @date  2020-3-17
 */
-export enum Content1 {
+enum Content1 {
     //% block="X center"
     xCenter = 1,
     //% block="Y center"
