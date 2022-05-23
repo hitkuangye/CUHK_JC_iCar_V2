@@ -3,8 +3,8 @@ Copyright (C): 2019-2026, The Chinese University of Hong Kong.
 */
 
 //% color="#022169" weight=20 icon="\uf1b9" block="CUHK-JC iCar"
-//% groups.loc.zh-tw = '["移動","車頭燈","RGB模組","超聲波感應器","線感應器","遙控器","避障感應器","引腳"]'
 //% groups='["Move","Headlights","RGB Module","Ultrasonic Sensor","Line Detector","Remote Control","Obstacle Sensor","Pins"]'
+//% groups.loc.zh-tw = '["移動","車頭燈","RGB模組","超聲波感應器","線感應器","遙控器","避障感應器","引腳"]'
 
 namespace CUHK_JC_iCar {
   const PCA9685_ADD = 0x41
@@ -233,7 +233,7 @@ namespace CUHK_JC_iCar {
   * Move iCar's individual motor forward or backward at speed(0-100%)
   */
   //% block="iCar |%LRstate| motor move |%direction| at speed %speed |\\%"
-  //% block.loc.zh-tw="iCar|%LRstate| 馬達以%speed |\\% 速度向|%direction|行"
+  //% block.loc.zh-tw="iCar|%LRstate|馬達向|%direction|行，速度%speed |\\% "
   //% speed.min=0 speed.max=100 speed.defl=0
   //% group="Move" blockGap=10
   export function singleTurn(LRstate: LRstate, direction: direction, speed: number): void {
@@ -258,7 +258,7 @@ namespace CUHK_JC_iCar {
    * Move iCar forward or backward at speed(1-100%)
    */
   //% block="iCar |%index| at speed %speed |\\%"
-  //% block.loc.zh-tw="iCar 以%speed|\\% 速度向|%index|行"
+  //% block.loc.zh-tw="iCar向|%index|行，速度%speed|\\% "
   //% speed.min=1 speed.max=100 speed.defl=1
   //% group="Move" blockGap=10
   export function carCtrlSpeed(index: CarState, speed: number): void {
