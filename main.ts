@@ -31,34 +31,34 @@ namespace CUHK_JC_iCar {
   let state: number;
   export enum CarState {
     //% block="Move Forward"
-    //% block.loc.zh="向前"
+    //% block.loc.zh-tw="向前"
     Forward,
     //% block="Move Backward"
-    //% block.loc.zh="向後"
+    //% block.loc.zh-tw="向後"
     Backward,
     //% block="Turn Left"
-    //% block.loc.zh="向左"
+    //% block.loc.zh-tw="向左"
     TurnLeft,
     //% block="Turn Right"
-    //% block.loc.zh="向右"
+    //% block.loc.zh-tw="向右"
     TurnRight,
     //% block="Rotate Left"
-    //% block.loc.zh="左旋"
+    //% block.loc.zh-tw="左旋"
     SpinLeft,
     //% block="Rotate Right"
-    //% block.loc.zh="右旋"
+    //% block.loc.zh-tw="右旋"
     SpinRight
   }
   export enum LRstate {
-    //% block.loc.zh="左"
+    //% block.loc.zh-tw="左"
     Left,
-    //% block.loc.zh="右"
+    //% block.loc.zh-tw="右"
     Right
   }
   export enum direction {
-    //% block.loc.zh="前"
+    //% block.loc.zh-tw="前"
     Forward,
-    //% block.loc.zh="左"
+    //% block.loc.zh-tw="左"
     Backward
   }
   export enum enPos {
@@ -218,7 +218,7 @@ namespace CUHK_JC_iCar {
    * Stop iCar immediately
    */
   //% block="iCar Stop"
-  //% block.loc.zh="iCar停車"
+  //% block.loc.zh-tw="iCar停車"
   //% group="Move" blockGap=10
   export function carStop() {
     carCtrlSpeed(6, 0)
@@ -228,7 +228,7 @@ namespace CUHK_JC_iCar {
   * Move iCar's individual motor forward or backward at speed(0-100%)
   */
   //% block="iCar |%LRstate| motor move |%direction| at speed %speed |\\%"
-  //% block.loc.zh="iCar|%LRstate| 馬達以%speed |\\%速度向|%direction|轉"
+  //% block.loc.zh-tw="iCar|%LRstate| 馬達以%speed |\\%速度向|%direction|轉"
   //% speed.min=0 speed.max=100 speed.defl=0
   //% group="Move" blockGap=10
   export function singleTurn(LRstate: LRstate, direction: direction, speed: number): void {
