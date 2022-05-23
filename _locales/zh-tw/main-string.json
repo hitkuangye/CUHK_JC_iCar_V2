@@ -1,0 +1,8 @@
+{
+    "CUHK_JC_iCar.carStop|block":"iCar 停下",
+    "CUHK_JC_iCar.singleTurn|block":"iCar |%LRstate| 馬達以速度%speed|\\%向|%direction|行駛",
+    "CUHK_JC_iCar.LRstate.Left|block":"左",
+    "CUHK_JC_iCar.LRstate.Right|block":"右",
+    "CUHK_JC_iCar.direction.Forward|block":"前",
+    "CUHK_JC_iCar.LRstate.Backward|block":"後"
+}
