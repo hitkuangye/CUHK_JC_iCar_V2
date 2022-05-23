@@ -210,7 +210,7 @@ namespace CUHK_JC_iCar {
   //% block="iCar Stop"
   //% group="Move" blockGap=10
   export function carStop() {
-    carCtrlSpeed(5, 0)
+    carCtrlSpeed(6, 0)
   }
 
   /**
