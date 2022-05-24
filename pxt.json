@@ -10,12 +10,9 @@
         "huskylens.ts",
         "main.ts",
         "i2c.cpp",
-        "_locales/zh/Huskylens-strings.json",
         "shims.d.ts",
         "enums.d.ts",
         "sendBuffer.asm",
-        "_locales/de/MakerBit-IR-Receiver-strings.json",
-        "_locales/zh-tw/iCar-strings.json",
         "extension.ts"
     ],
     "testFiles": [
