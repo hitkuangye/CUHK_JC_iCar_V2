@@ -878,7 +878,7 @@ namespace CUHK_JC_iCar {
   //% button.fieldEditor="gridpicker"
   //% button.fieldOptions.columns=3
   //% button.fieldOptions.tooltips="false"
-  //% group="Remote Cntrol" blockGap=10
+  //% group="Remote Control" blockGap=10
   export function onIrButton(button: IrButton, action: IrButtonAction, handler: () => void) {
     initIrState();
     if (action === IrButtonAction.Pressed) {
@@ -894,7 +894,7 @@ namespace CUHK_JC_iCar {
   */
   //% block="iCar remote control receiver turn ON" 
   //% block.loc.zh-tw="iCar啟動遙控接收器"
-  //% group="Remote Cntrol" blockGap=10
+  //% group="Remote Control" blockGap=10
   export function connectIrReceiver(): void {
     let protocol = 0
     let pin = DigitalPin.P8
