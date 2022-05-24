@@ -1096,7 +1096,7 @@ namespace CUHK_JC_iCar {
   * iCar digital read P4 or P5's state
   */
   //% block="iCar digital read pin |%pinNumber| "
-  //% block.loc.zh-tw="iCar數字讀取引腳|%pinNumber|"
+  //% block.loc.zh-tw="iCar向引腳|%pinNumber|數字讀取"
   //% group="Pins" blockGap=10
   export function digitalRead(pinNumber: pinNumber): number {
     if (pinNumber == 0) {
