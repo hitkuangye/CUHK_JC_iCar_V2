@@ -32,16 +32,16 @@ namespace CUHK_JC_iCar {
   let state: number;
   export enum CarState {
     //% block="Move Forward"
-    //% block.loc.zh-tw="前"
+    //% block.loc.zh-tw="前行"
     Forward,
     //% block="Move Backward"
-    //% block.loc.zh-tw="後"
+    //% block.loc.zh-tw="後行"
     Backward,
     //% block="Turn Left"
-    //% block.loc.zh-tw="左"
+    //% block.loc.zh-tw="左行"
     TurnLeft,
     //% block="Turn Right"
-    //% block.loc.zh-tw="右"
+    //% block.loc.zh-tw="右行"
     TurnRight,
     //% block="Rotate Left"
     //% block.loc.zh-tw="左自轉"
@@ -271,7 +271,7 @@ namespace CUHK_JC_iCar {
    * Move iCar forward or backward at speed(1-100%)
    */
   //% block="iCar |%index| at speed %speed |\\%"
-  //% block.loc.zh-tw="iCar向|%index|行，速度%speed|\\% "
+  //% block.loc.zh-tw="iCar向|%index|，速度%speed|\\% "
   //% speed.min=1 speed.max=100 speed.defl=1
   //% group="Move" blockGap=10
   export function carCtrlSpeed(index: CarState, speed: number): void {
