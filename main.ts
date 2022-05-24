@@ -32,22 +32,22 @@ namespace CUHK_JC_iCar {
   let state: number;
   export enum CarState {
     //% block="Move Forward"
-    //% block.loc.zh-tw="向前"
+    //% block.loc.zh-tw="前"
     Forward,
     //% block="Move Backward"
-    //% block.loc.zh-tw="向後"
+    //% block.loc.zh-tw="後"
     Backward,
     //% block="Turn Left"
-    //% block.loc.zh-tw="向左"
+    //% block.loc.zh-tw="左"
     TurnLeft,
     //% block="Turn Right"
-    //% block.loc.zh-tw="向右"
+    //% block.loc.zh-tw="右"
     TurnRight,
     //% block="Rotate Left"
-    //% block.loc.zh-tw="向左自轉"
+    //% block.loc.zh-tw="左自轉"
     SpinLeft,
     //% block="Rotate Right"
-    //% block.loc.zh-tw="向右自轉"
+    //% block.loc.zh-tw="右自轉"
     SpinRight
   }
   export enum LRstate {
@@ -291,6 +291,7 @@ namespace CUHK_JC_iCar {
   * Turn iCar's headlights off
   */ 
   //% block="iCar headlights turn OFF"
+  //% block.loc.zh-tw="iCar車頭燈關閉"
   //% group="Headlights" blockGap=10
   export function headLightsOff() {
     setHeadColor(0)
@@ -300,6 +301,7 @@ namespace CUHK_JC_iCar {
    * Set iCar's headlights to selected color
    */ 
   //% block="iCar headlights show $color"
+  //% block.loc.zh-tw="iCar車頭燈設為$color"
   //% color.shadow="colorNumberPicker"
   //% group="Headlights" blockGap=10
   export function setHeadColor(color: number) {
@@ -423,6 +425,7 @@ namespace CUHK_JC_iCar {
   * Turn iCar's RGB module off
   */
   //% block="iCar RGB module turn OFF"
+  //% block.loc.zh-tw="iCar RGB模組關閉"
   //% group="RGB Module" blockGap=10
   export function breathLightsOff() {
     RGB_Car_Program().showColor(rgb(0, 0, 0))
@@ -432,6 +435,7 @@ namespace CUHK_JC_iCar {
   * Set iCar's RGB module to show Marquee effect once
   */
   //% block="iCar RGB module show Marquee"
+  //% block.loc.zh-tw="iCar RGB模組啟動跑馬燈效"
   //% group="RGB Module" blockGap=10
   export function runHorseLight() {
     for (let index = 0; index < 3; index++) {
@@ -447,6 +451,7 @@ namespace CUHK_JC_iCar {
   * Set iCar's RGB module to show Flowing effect once
   */
   //% block="iCar RGB module show Flowing"
+  //% block.loc.zh-tw="iCar RGB模組啟動流水燈效"
   //% group="RGB Module" blockGap=10
   export function runFlowLight() {
     for (let index = 0; index < 3; index++) {
@@ -461,6 +466,7 @@ namespace CUHK_JC_iCar {
   * Set iCar's RGB module to show Breathing effect once
   */
   //% block="iCar RGB module show Breathing"
+  //% block.loc.zh-tw="iCar RGB模組啟動呼吸燈效"
   //% group="RGB Module" blockGap=10
   export function runBreathLight() {
     for (let index = 0; index <= 13; index++) {
@@ -476,6 +482,7 @@ namespace CUHK_JC_iCar {
   * Set iCar's RGB module to selected color
   */ 
   //% block="iCar RGB module show $color"
+  //% block.loc.zh-tw="iCar RGB模組設為$color"
   //% color.shadow="colorNumberPicker"
   //% group="RGB Module" blockGap=10
   export function setBreathColor(color: number) {
@@ -489,6 +496,7 @@ namespace CUHK_JC_iCar {
   * iCar get the reading of ultrasonic sensor
   */ 
   //% block="iCar ultrasonic sensor get distance(cm)"
+  //% block.loc.zh-tw="iCar超聲波感應器讀取距離(cm)"
   //% group="Ultrasonic Sensor" blockGap=10
   export function Ultrasonic_Car(): number {
     let d = 0
@@ -512,6 +520,7 @@ namespace CUHK_JC_iCar {
   * The line detector at one side is blocked or not?
   */ 
   //% block="is |%direct|iCar line detector %value ?"
+  //% block.loc.zh-tw="iCar|%direct|線感應器讀數為%value ?"
   //% group="Line Detector" blockGap=10
   export function Line_Sensor(direct: enPos, value: enLineState): boolean {
     let temp: boolean = false;
@@ -865,7 +874,7 @@ namespace CUHK_JC_iCar {
    * iCar do something when a button on remote control is pressed or released
    */
   //% block="when iCar remote control button | %button | is %action"
-  //% block.loc.zh-tw="當iCar遙控器的 | %button |  %action"
+  //% block.loc.zh-tw="當iCar遙控器的 | %button |按鈕被%action"
   //% button.fieldEditor="gridpicker"
   //% button.fieldOptions.columns=3
   //% button.fieldOptions.tooltips="false"
@@ -980,7 +989,7 @@ namespace CUHK_JC_iCar {
   * The obstacle sensor is blocked or not?
   */
   //% block="is iCar obstacle sensor |%value ?"
-  //% block.loc.zh-tw = "iCar避障感應器|%value ?"
+  //% block.loc.zh-tw="iCar避障感應器 |%value ?"
   //% group="Obstacle Sensor" blockGap=10
   export function Avoid_Sensor(value: enAvoidState): boolean {
     let temp: boolean = false;
@@ -1025,7 +1034,7 @@ namespace CUHK_JC_iCar {
   * iCar analog write P4 or P5 to 0-1023 
   */
   //% block="iCar analog write pin | %num| to %value "
-  //% block.loc.zh-tw = "iCar向引腳| %num|模擬寫入%value"
+  //% block.loc.zh-tw="iCar向引腳| %num|模擬寫入%value"
   //% group="Pins" blockGap=10
   //% value.min=0 value.max=1023
   export function analogPinWrite(num: enAnalogPin, value: number): void {
@@ -1042,7 +1051,7 @@ namespace CUHK_JC_iCar {
   * Turn iCar's servomotor at J2 or J3 off 
   */
   //% block="iCar servomotor pin | %num| turn OFF"
-  //% block.loc.zh-tw = "iCar伺服馬達| %num|關閉"
+  //% block.loc.zh-tw="iCar伺服馬達| %num|關閉"
   //% group="Pins" blockGap=10
   //% num.min=1 num.max=2 
   export function servoStop(num: enServo): void {
@@ -1052,7 +1061,7 @@ namespace CUHK_JC_iCar {
   * Move iCar's servomotor at J2 or J3 to degree 
   */
   //% block="iCar servomotor write pin | %num| to %value degree"
-  //% block.loc.zh-tw = "iCar伺服馬達| %num|轉至%value度"
+  //% block.loc.zh-tw="iCar伺服馬達| %num|轉至%value度"
   //% group="Pins" blockGap=10
   //% num.min=1 num.max=2 value.min=0 value.max=180
   export function servoAngle(num: enServo, value: number): void {
@@ -1066,7 +1075,7 @@ namespace CUHK_JC_iCar {
   * iCar digital write P4 or P5 to on or off 
   */
   //% block="iCar digital write pin |%pinNumber| to |%onOffState|"
-  //% block.loc.zh-tw = "iCar將引腳|%pinNumber|設為|%onOffState|"
+  //% block.loc.zh-tw="iCar將引腳|%pinNumber|設為|%onOffState|"
   //% group="Pins" blockGap=10
   export function digitalWrite(pinNumber: pinNumber, onOffState: onOffState): void {
     if (pinNumber == 0) {
@@ -1087,7 +1096,7 @@ namespace CUHK_JC_iCar {
   * iCar digital read P4 or P5's state
   */
   //% block="iCar digital read pin |%pinNumber| "
-  //% block.loc.zh-tw = "iCar數字讀取引腳|%pinNumber|"
+  //% block.loc.zh-tw="iCar數字讀取引腳|%pinNumber|"
   //% group="Pins" blockGap=10
   export function digitalRead(pinNumber: pinNumber): number {
     if (pinNumber == 0) {
