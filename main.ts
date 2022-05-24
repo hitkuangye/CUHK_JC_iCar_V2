@@ -33,7 +33,7 @@ namespace CUHK_JC_iCar {
       TurnLeft,
       //% block="Turn Right"
       //% block.loc.zh-tw="右走"
-      //% block.loc.zh-cn="
+      //% block.loc.zh-cn="右走"
       TurnRight,
       //% block="Rotate Left"
       //% block.loc.zh-tw="左自轉"
