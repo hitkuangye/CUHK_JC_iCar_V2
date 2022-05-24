@@ -13,23 +13,31 @@
 */
 enum Content1 {
     //% block="X center"
+    //% block.loc.zh-tw="X中心"
     xCenter = 1,
     //% block="Y center"
+    //% block.loc.zh-tw="Y中心"
     yCenter = 2,
     //% block="width"
+    //% block.loc.zh-tw="寬度"
     width = 3,
     //% block="height"
+    //% block.loc.zh-tw="高度"
     height = 4
 }
 
 enum Content2 {
     //% block="X beginning"
+    //% block.loc.zh-tw="X起點"
     xOrigin = 1,
     //% block="Y beginning"
+    //% block.loc.zh-tw="Y起點"
     yOrigin = 2,
     //% block="X endpoint"
+    //% block.loc.zh-tw="X終點"
     xTarget = 3,
     //% block="Y endpoint"
+    //% block.loc.zh-tw="Y終點"
     yTarget = 4
 }
 
@@ -37,12 +45,16 @@ enum Content3 {
     //% block="ID"
     ID = 5,
     //% block="X center"
+    //% block.loc.zh-tw="X中心"
     xCenter = 1,
     //% block="Y center"
+    //% block.loc.zh-tw="Y中心"
     yCenter = 2,
     //% block="width"
+    //% block.loc.zh-tw="寬度"
     width = 3,
     //% block="height"
+    //% block.loc.zh-tw="高度"
     height = 4
 }
 
@@ -50,20 +62,26 @@ enum Content4 {
     //% block="ID"
     ID = 5,
     //% block="X beginning"
+    //% block.loc.zh-tw="X起點"
     xOrigin = 1,
     //% block="Y beginning"
+    //% block.loc.zh-tw="Y起點"
     yOrigin = 2,
     //% block="X endpoint"
+    //% block.loc.zh-tw="X終點"
     xTarget = 3,
     //% block="Y endpoint"
+    //% block.loc.zh-tw="Y終點"
     yTarget = 4
 
 }
 
 enum HUSKYLENSResultType_t {
     //%block="frame"
+    //% block.loc.zh-tw="方框"
     HUSKYLENSResultBlock = 1,
     //%block="arrow"
+    //% block.loc.zh-tw="箭頭"
     HUSKYLENSResultArrow = 2,
 }
 
@@ -78,14 +96,18 @@ let FIRST = {
 
 enum HUSKYLENSMode{
     //%block="save"
+    //% block.loc.zh-tw="保存"
     SAVE,
     //%block="load"
+    //% block.loc.zh-tw="加載"
     LOAD,
 }
 enum HUSKYLENSphoto{
     //%block="photo"
+    //% block.loc.zh-tw="拍照"
     PHOTO,
     //%block="screenshot"
+    //% block.loc.zh-tw="截圖"
     SCREENSHOT
 }
 enum protocolCommand {
@@ -112,22 +134,31 @@ enum protocolCommand {
 
 enum protocolAlgorithm {
     //%block="Face Recognition"
+    //% block.loc.zh-tw="人臉辨識"
     ALGORITHM_FACE_RECOGNITION = 0,
     //%block="Object Tracking"
+    //% block.loc.zh-tw="物體追蹤"
     ALGORITHM_OBJECT_TRACKING = 1,
     //%block="Object Recognition"
+    //% block.loc.zh-tw="物體辨識"
     ALGORITHM_OBJECT_RECOGNITION = 2,
     //%block="Line Tracking"
+    //% block.loc.zh-tw="循線"
     ALGORITHM_LINE_TRACKING = 3,
     //%block="Color Recognition"
+    //% block.loc.zh-tw="顏色辨識"
     ALGORITHM_COLOR_RECOGNITION = 4,
     //%block="Tag Recognition"
+    //% block.loc.zh-tw="標籤辨識"
     ALGORITHM_TAG_RECOGNITION = 5,
     //%block="Object Classification"
+    //% block.loc.zh-tw="物體分類"
     OBJECTCLASSIFICATION,
-    //%block="QR Recogmition (EDU only)"
+    //%block="二維碼識別（教育版獨有）"
+    //% block.loc.zh-tw="截圖"
     QRRECOGMITION,
-    //%block="Barcode Recognition (EDU only)"
+    //%block="條碼識別（教育版獨有）"
+    //% block.loc.zh-tw="截圖"
     BARCODERECOGNITION,
 
 }
@@ -174,6 +205,7 @@ namespace huskylens {
      * HuskyLens init I2C until success
      */
     //%block="HuskyLens initialize I2C until success"
+    //% block.loc.zh-tw="HuskyLens通過I2C初始化直到成功"
     //% weight=90
     export function initI2c(): void {
         init();
@@ -185,6 +217,7 @@ namespace huskylens {
      * HuskyLens change mode algorithm until success.
      */
     //%block="HuskyLens switch algorithm to %mode"
+    //% block.loc.zh-tw="HuskyLens切換到 %mode 算法直到成功"
     //% weight=85
     export function initMode(mode: protocolAlgorithm) {
         writeAlgorithm(mode, protocolCommand.COMMAND_REQUEST_ALGORITHM)
@@ -194,8 +227,8 @@ namespace huskylens {
     /**
      * HuskyLens requests data and stores it in the result.
      */
-
     //% block="HuskyLens request data once and save into the result"
+    //% block.loc.zh-tw="HuskyLens請求一次數據存入結果"
     //% weight=80
     export function request(): void {
         protocolWriteCommand(protocolCommand.COMMAND_REQUEST)
@@ -206,6 +239,7 @@ namespace huskylens {
      * HuskyLens get the parameter of box near the screen center from result.
      */
     //% block="HuskyLens get %data of frame closest to the center of screen from the result"
+    //% block.loc.zh-tw="HuskyLens從結果中獲取靠近中心方框的 %deta 參數"
     //% weight=77
     //% advanced=true
     export function readBox_s(data: Content3): number {
@@ -232,6 +266,7 @@ namespace huskylens {
      * HuskyLens get the parameter of arrow near the screen center from result.
      */
     //% block="HuskyLens get %data of arrow closest to the center of screen from the result"
+    //% block.loc.zh-tw="HuskyLens從結果中獲取靠近中心箭頭的 %deta 參數"
     //% weight=77
     //% advanced=true
     export function readArrow_s(data: Content4): number {
@@ -258,6 +293,7 @@ namespace huskylens {
      * @param id to id ,eg: 1
      */
     //% block="HuskyLens check if ID %id is learned from the result"
+    //% block.loc.zh-tw="HuskyLens從結果中獲取ID %ID 是否已學習？"
     //% weight=76
     //% advanced=true
     export function isLearned(id: number): boolean {
@@ -270,6 +306,7 @@ namespace huskylens {
      * @param id to id ,eg: 1
      */
     //% block="HuskyLens check if ID %id %Ht is on screen from the result"
+    //% block.loc.zh-tw="HuskyLens從結果中獲取ID %ID 的 %Ht 是否在畫面中？"
     //% weight=75
     export function isAppear(id: number, Ht: HUSKYLENSResultType_t): boolean {
         switch (Ht) {
@@ -286,6 +323,7 @@ namespace huskylens {
      * @param id to id ,eg: 1
      */
     //%block="HuskyLens get  $number1 of ID $id frame from the result"
+    //% block.loc.zh-tw="HuskyLens從結果中獲取ID %ID 方框的參數 %number1"
     //% weight=65
     export function readeBox( id: number,number1: Content1): number {
         let hk_y = cycle_block(id, 1);
@@ -314,6 +352,7 @@ namespace huskylens {
      */
 
     //%block="HuskyLens get $number1 of ID $id arrow from the result"
+    //% block.loc.zh-tw="HuskyLens從結果中獲取ID %ID 箭頭的參數 %number1"
     //% weight=60
     export function readeArrow(id: number,number1: Content2): number {
         let hk_y = cycle_arrow(id, 1);
@@ -344,6 +383,7 @@ namespace huskylens {
      * 
      */
     //%block="HuskyLens get a total number of %Httotal from the result"
+    //% block.loc.zh-tw="HuskyLens從結果中獲取 %Ht 總數"
     //% weight=90
     //% advanced=true
     export function getBox(Ht: HUSKYLENSResultType_t): number {
@@ -361,6 +401,7 @@ namespace huskylens {
      * @param index to index ,eg: 1
      */
     //% block="HuskyLens get $data of the No. $index frame from the result"
+    //% block.loc.zh-tw="HuskyLens從結果中獲取第 %index 個方框 %deta 參數"
     //% weight=60
     //% advanced=true
     export function readBox_ss(index: number, data: Content3): number {
@@ -388,6 +429,7 @@ namespace huskylens {
      * @param index to index ,eg: 1
     */
     //% block="HuskyLens get $data of the No. $index arrow from the result"
+    //% block.loc.zh-tw="HuskyLens從結果中獲取第 %index 個箭頭 %deta 參數"
     //% weight=60
     //% advanced=true
     export function readArrow_ss(index: number, data: Content4): number {
@@ -415,6 +457,7 @@ namespace huskylens {
      * @param id to id ,eg: 1
      */
     //%block="HuskyLens get a total number of ID %id %Httotal from the result"
+    //% block.loc.zh-tw="HuskyLens從結果中獲取ID %ID %Ht 總數"
     //% weight=55
     //% advanced=true
     export function getBox_S(id: number, Ht: HUSKYLENSResultType_t): number {
@@ -433,6 +476,7 @@ namespace huskylens {
      * @param index to index ,eg: 1
      */
     //%block="HuskyLens get $number1 of the ID $id  No. $index frame from the result"
+    //% block.loc.zh-tw="HuskyLens從結果中獲取ID %ID 第 %index 個方框的參數 %number1"
     //% weight=45
     //% advanced=true
     export function readeBox_index(id: number, index: number, number1: Content1): number {
@@ -464,6 +508,7 @@ namespace huskylens {
      * @param index to index ,eg: 1
      */
     //%block="HuskyLens get $number1 of the ID $id No. $index arrow from the result"
+    //% block.loc.zh-tw="HuskyLens從結果中獲取ID %ID 第 %index 個箭頭的參數 %number1"
     //% weight=35
     //% advanced=true
     export function readeArrow_index(index: number, id: number, number1: Content2): number {
@@ -494,6 +539,7 @@ namespace huskylens {
      * @param id to id ,eg: 1
      */
     //%block="HuskyLens learn ID %id once automatically"
+    //% block.loc.zh-tw="HuskyLens自動學習一次ID %id"
     //% weight=30
     //% advanced=true
     export function writeLearn1(id: number):void{
@@ -504,6 +550,7 @@ namespace huskylens {
      * Huskylens forget all learning data of the current algorithm
      */
     //%block="HuskyLens forget all learning data of the current algorithm"
+    //% block.loc.zh-tw="HuskyLens遺忘當前算法的所有學習數據"
     //% weight=29
     //% advanced=true
     export function forgetLearn():void{
@@ -516,6 +563,7 @@ namespace huskylens {
      * @param name to name ,eg: "DFRobot"
      */
     //%block="HuskyLens name ID %id of the current algorithm as %name"
+    //% block.loc.zh-tw="HuskyLens設定當前算法ID %id 名稱 %name"
     //% weight=28
     //% advanced=true
     export function writeName(id:number,name:string):void{
@@ -544,6 +592,7 @@ namespace huskylens {
      * @param y to y ,eg: 30
      */
     //%block="HuskyLens show custom texts %name at position x %x y %y on screen"
+    //% block.loc.zh-tw="HuskyLens螢幕疊加顯示文字 %name 在x %x y %y"
     //% weight=27
     //% advanced=true
     //% x.min=0 x.max=319
@@ -576,6 +625,7 @@ namespace huskylens {
      * HuskyLens clear characters in the screen
      */
     //%block="HuskyLens clear all custom texts on screen"
+    //% block.loc.zh-tw="HuskyLens清除螢幕顯示的文字"
     //% weight=26
     //% advanced=true
     export function clearOSD():void{
@@ -586,6 +636,7 @@ namespace huskylens {
      * Photos and screenshots
      */
     //%block="HuskyLens take %request and save to SD card"
+    //% block.loc.zh-tw="HuskyLens觸發 %request 保存到SD卡"
     //% weight=25
     //% advanced=true
     export function takePhotoToSDCard(request:HUSKYLENSphoto):void{
@@ -608,6 +659,7 @@ namespace huskylens {
      * Save data model
      */
     //%block="HuskyLens %command current algorithm data as No. %data model of SD card"
+    //% block.loc.zh-tw="HuskyLens %command 當前算法數據為SD卡 %data 號模型"
     //% weight=24
     //% advanced=true
     //% data.min=0 data.max=5
@@ -631,6 +683,7 @@ namespace huskylens {
      * HuskyLens get the number of the learned ID from result.
      */
     //%block="HuskyLens get a total number of learned IDs from the result"
+    //% block.loc.zh-tw="HuskyLens從結果中獲取已學ID總數"
     //% weight=79
     //% advanced=true
     export function getIds(): number {
@@ -640,6 +693,7 @@ namespace huskylens {
      * The box or arrow HuskyLens got from result appears in screen?
      */
     //%block="HuskyLens check if %Ht is on screen from the result"
+    //% block.loc.zh-tw="HuskyLens從結果中獲取 %Ht是否在畫面中?"
     //% weight=78
     export function isAppear_s(Ht: HUSKYLENSResultType_t): boolean {
         switch (Ht) {
