@@ -28,12 +28,12 @@ namespace CUHK_JC_iCar {
       //% block.loc.zh-cn="后走"
       Backward,
       //% block="Turn Left"
-      //% block.loc.zh-tw="左行"
-      //% block.loc.zh-cn="左走"
+      //% block.loc.zh-tw="左轉"
+      //% block.loc.zh-cn="左转"
       TurnLeft,
       //% block="Turn Right"
-      //% block.loc.zh-tw="右走"
-      //% block.loc.zh-cn="右走"
+      //% block.loc.zh-tw="右轉"
+      //% block.loc.zh-cn="右转"
       TurnRight,
       //% block="Rotate Left"
       //% block.loc.zh-tw="左自轉"
