@@ -885,7 +885,7 @@ namespace CUHK_JC_iCar {
     //% button.fieldOptions.columns=3
     //% button.fieldOptions.tooltips="false"
     //% group="Remote Control" blockGap=10
-    export function irButtonBoolean(button: IrButton, handler: () => void) {
+    export function irButtonBoolean(button: IrButton): boolean {
         let temp:boolean = false
         if(irButton()==irButtonCode(button)){
             temp = true
