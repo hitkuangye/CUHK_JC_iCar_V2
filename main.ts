@@ -44,10 +44,10 @@ namespace CUHK_JC_iCar {
     //% block.loc.zh-tw="向右"
     TurnRight,
     //% block="Rotate Left"
-    //% block.loc.zh-tw="左旋"
+    //% block.loc.zh-tw="向左自轉"
     SpinLeft,
     //% block="Rotate Right"
-    //% block.loc.zh-tw="右旋"
+    //% block.loc.zh-tw="向右自轉"
     SpinRight
   }
   export enum LRstate {
@@ -63,15 +63,23 @@ namespace CUHK_JC_iCar {
     //% block.loc.zh-tw="前"
     Forward,
     //% block="Backward"
-    //% block.loc.zh-tw="左"
+    //% block.loc.zh-tw="後"
     Backward
   }
   export enum enPos {
+    //% block="Left"
+    //% block.loc.zh-tw="左"
     Left,
+    //% block="Right"
+    //% block.loc.zh-tw="右"
     Right
   }
   export enum enLineState {
+    //% block="WhiteLine"
+    //% block.loc.zh-tw="白線"
     WhiteLine,
+    //% block="Blackline"
+    //% block.loc.zh-tw="黑線"
     BlackLine
   }
   export enum pinNumber {
@@ -79,7 +87,11 @@ namespace CUHK_JC_iCar {
     P5
   }
   export enum onOffState {
+    //% block="High"
+    //% block.loc.zh-tw="開"
     High,
+    //% block="Low"
+    //% block.loc.zh-tw="關"
     Low
   }
   export enum enServo {
@@ -93,9 +105,9 @@ namespace CUHK_JC_iCar {
     P5
   }
   export enum enAvoidState {
-    //% blockId="OBSTACLE" block="Blocked"
+    //% blockId="OBSTACLE" block="Blocked" block.loc.zh-tw="被遮擋"
     OBSTACLE = 0,
-    //% blockId="NOOBSTACLE" block="Unblocked"
+    //% blockId="NOOBSTACLE" block="Unblocked" block.loc.zh-tw="不被遮擋"
     NOOBSTACLE = 1
   }
   export const enum IrButton {
@@ -139,14 +151,14 @@ namespace CUHK_JC_iCar {
     Unused_3 = -3,
     //% block="▼"
     Down = 0x4A,
-    //% block="any"
+    //% block="any" block.loc.zh-tw="隨意"
     Any = -1,
   }
 
   export const enum IrButtonAction {
-    //% block="Pressed"
+    //% block="Pressed" block.loc.zh-tw="按下"
     Pressed = 0,
-    //% block="Released"
+    //% block="Released" block.loc.zh-tw="放鬆"
     Released = 1,
   }
 
@@ -853,6 +865,7 @@ namespace CUHK_JC_iCar {
    * iCar do something when a button on remote control is pressed or released
    */
   //% block="when iCar remote control button | %button | is %action"
+  //% block.loc.zh-tw="當iCar遙控器的 | %button |  %action"
   //% button.fieldEditor="gridpicker"
   //% button.fieldOptions.columns=3
   //% button.fieldOptions.tooltips="false"
@@ -870,7 +883,8 @@ namespace CUHK_JC_iCar {
   /**
   * iCar initialize the remote control receiver
   */
-  //% block="iCar remote control receiver turn ON"
+  //% block="iCar remote control receiver turn ON" 
+  //% block.loc.zh-tw="iCar啟動遙控接收器"
   //% group="Remote Cntrol" blockGap=10
   export function connectIrReceiver(): void {
     let protocol = 0
@@ -966,6 +980,7 @@ namespace CUHK_JC_iCar {
   * The obstacle sensor is blocked or not?
   */
   //% block="is iCar obstacle sensor |%value ?"
+  //% block.loc.zh-tw = "iCar避障感應器|%value ?"
   //% group="Obstacle Sensor" blockGap=10
   export function Avoid_Sensor(value: enAvoidState): boolean {
     let temp: boolean = false;
@@ -1010,6 +1025,7 @@ namespace CUHK_JC_iCar {
   * iCar analog write P4 or P5 to 0-1023 
   */
   //% block="iCar analog write pin | %num| to %value "
+  //% block.loc.zh-tw = "iCar向引腳| %num|模擬寫入%value"
   //% group="Pins" blockGap=10
   //% value.min=0 value.max=1023
   export function analogPinWrite(num: enAnalogPin, value: number): void {
@@ -1026,6 +1042,7 @@ namespace CUHK_JC_iCar {
   * Turn iCar's servomotor at J2 or J3 off 
   */
   //% block="iCar servomotor pin | %num| turn OFF"
+  //% block.loc.zh-tw = "iCar伺服馬達| %num|關閉"
   //% group="Pins" blockGap=10
   //% num.min=1 num.max=2 
   export function servoStop(num: enServo): void {
@@ -1035,6 +1052,7 @@ namespace CUHK_JC_iCar {
   * Move iCar's servomotor at J2 or J3 to degree 
   */
   //% block="iCar servomotor write pin | %num| to %value degree"
+  //% block.loc.zh-tw = "iCar伺服馬達| %num|轉至%value度"
   //% group="Pins" blockGap=10
   //% num.min=1 num.max=2 value.min=0 value.max=180
   export function servoAngle(num: enServo, value: number): void {
@@ -1048,6 +1066,7 @@ namespace CUHK_JC_iCar {
   * iCar digital write P4 or P5 to on or off 
   */
   //% block="iCar digital write pin |%pinNumber| to |%onOffState|"
+  //% block.loc.zh-tw = "iCar將引腳|%pinNumber|設為|%onOffState|"
   //% group="Pins" blockGap=10
   export function digitalWrite(pinNumber: pinNumber, onOffState: onOffState): void {
     if (pinNumber == 0) {
@@ -1068,6 +1087,7 @@ namespace CUHK_JC_iCar {
   * iCar digital read P4 or P5's state
   */
   //% block="iCar digital read pin |%pinNumber| "
+  //% block.loc.zh-tw = "iCar數字讀取引腳|%pinNumber|"
   //% group="Pins" blockGap=10
   export function digitalRead(pinNumber: pinNumber): number {
     if (pinNumber == 0) {
