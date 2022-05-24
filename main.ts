@@ -256,7 +256,7 @@ namespace CUHK_JC_iCar {
     */
     //% block="iCar |%LRstate| motor move |%direction| at speed %speed |\\%"
     //% block.loc.zh-tw="iCar|%LRstate|馬達向|%direction|行，速度%speed |\\% "
-    //% block.loc.zh-cn="iCar|%LRstate|马达往|%direction|走，速度%speed |\\% "
+    //% block.loc.zh-cn="iCar|%LRstate|电机往|%direction|走，速度%speed |\\% "
     //% speed.min=0 speed.max=100 speed.defl=0
     //% group="Move" blockGap=10
     export function singleTurn(LRstate: LRstate, direction: direction, speed: number): void {
@@ -1092,7 +1092,7 @@ namespace CUHK_JC_iCar {
     */
     //% block="iCar servomotor pin | %num| turn OFF"
     //% block.loc.zh-tw="iCar伺服馬達| %num|關閉"
-    //% block.loc.zh-cn="iCar伺服马达| %num|关闭"
+    //% block.loc.zh-cn="iCar伺服电机| %num|关闭"
     //% group="Pin" blockGap=10
     //% num.min=1 num.max=2 
     export function servoStop(num: enServo): void {
@@ -1103,7 +1103,7 @@ namespace CUHK_JC_iCar {
     */
     //% block="iCar servomotor write pin | %num| to %value degree"
     //% block.loc.zh-tw="iCar伺服馬達| %num|轉至%value度"
-    //% block.loc.zh-cn="iCar伺服马达| %num|转至%value度"
+    //% block.loc.zh-cn="iCar伺服电机| %num|转至%value度"
     //% group="Pin" blockGap=10
     //% num.min=1 num.max=2 value.min=0 value.max=180
     export function servoAngle(num: enServo, value: number): void {
