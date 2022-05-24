@@ -157,8 +157,8 @@ namespace CUHK_JC_iCar {
       Unused_3 = -3,
       //% block="▼"
       Down = 0x4A,
-      //% block="any" block.loc.zh-tw="隨意"
-      //% block.loc.zh-cn="任意"
+      //% block="any" block.loc.zh-tw="任何"
+      //% block.loc.zh-cn="任何"
       Any = -1,
     }
   
