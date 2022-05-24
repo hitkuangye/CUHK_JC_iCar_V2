@@ -21,53 +21,67 @@ namespace CUHK_JC_iCar {
     export enum CarState {
       //% block="Move Forward"
       //% block.loc.zh-tw="前行"
+      //% block.loc.zh-cn="前走"
       Forward,
       //% block="Move Backward"
       //% block.loc.zh-tw="後行"
+      //% block.loc.zh-cn="后走"
       Backward,
       //% block="Turn Left"
       //% block.loc.zh-tw="左行"
+      //% block.loc.zh-cn="左走"
       TurnLeft,
       //% block="Turn Right"
-      //% block.loc.zh-tw="右行"
+      //% block.loc.zh-tw="右走"
+      //% block.loc.zh-cn="
       TurnRight,
       //% block="Rotate Left"
       //% block.loc.zh-tw="左自轉"
+      //% block.loc.zh-cn="左自转"
       SpinLeft,
       //% block="Rotate Right"
       //% block.loc.zh-tw="右自轉"
+      //% block.loc.zh-cn="右自转"
       SpinRight
     }
     export enum LRstate {
       //% block="Left"
       //% block.loc.zh-tw="左"
+      //% block.loc.zh-cn="左"
       Left,
       //% block="Right"
       //% block.loc.zh-tw="右"
+      //% block.loc.zh-cn="右"
       Right
     }
     export enum direction {
       //% block="Forward"
       //% block.loc.zh-tw="前"
+      //% block.loc.zh-cn="前"
       Forward,
       //% block="Backward"
       //% block.loc.zh-tw="後"
+      //% block.loc.zh-cn="后"
       Backward
     }
     export enum enPos {
       //% block="Left"
       //% block.loc.zh-tw="左"
+      //% block.loc.zh-cn="左"
       Left,
       //% block="Right"
       //% block.loc.zh-tw="右"
+      //% block.loc.zh-cn="右"
       Right
     }
     export enum enLineState {
       //% block="WhiteLine"
       //% block.loc.zh-tw="白線"
+      //% block.loc.zh-cn="白线"
       WhiteLine,
       //% block="Blackline"
       //% block.loc.zh-tw="黑線"
+      //% block.loc.zh-cn="黑线"
       BlackLine
     }
     export enum pinNumber {
@@ -77,9 +91,11 @@ namespace CUHK_JC_iCar {
     export enum onOffState {
       //% block="High"
       //% block.loc.zh-tw="開"
+      //% block.loc.zh-cn="开"
       High,
       //% block="Low"
       //% block.loc.zh-tw="關"
+      //% block.loc.zh-cn="关"
       Low
     }
     export enum enServo {
@@ -94,8 +110,10 @@ namespace CUHK_JC_iCar {
     }
     export enum enAvoidState {
       //% blockId="OBSTACLE" block="Blocked" block.loc.zh-tw="被遮擋"
+      //% block.loc.zh-cn="被遮挡"
       OBSTACLE = 0,
-      //% blockId="NOOBSTACLE" block="Unblocked" block.loc.zh-tw="不被遮擋"
+      //% blockId="NOOBSTACLE" block="Unblocked" block.loc.zh-tw="沒被遮擋"
+      //% block.loc.zh-cn="没被遮挡"
       NOOBSTACLE = 1
     }
     export const enum IrButton {
@@ -140,13 +158,16 @@ namespace CUHK_JC_iCar {
       //% block="▼"
       Down = 0x4A,
       //% block="any" block.loc.zh-tw="隨意"
+      //% block.loc.zh-cn="任意"
       Any = -1,
     }
   
     export const enum IrButtonAction {
       //% block="Pressed" block.loc.zh-tw="按下"
+      //% block.loc.zh-cn="按下"
       Pressed = 0,
       //% block="Released" block.loc.zh-tw="放鬆"
+      //% block.loc.zh-cn="放松"
       Released = 1,
     }
   
@@ -224,8 +245,8 @@ namespace CUHK_JC_iCar {
      */
     //% block="iCar Stop"
     //% block.loc.zh-tw="iCar停車"
+    //% block.loc.zh-cn="iCar停车"
     //% group="Move" blockGap=10
-    //% group.loc.zh-tw = "移動"
     export function carStop() {
       carCtrlSpeed(6, 0)
     }
@@ -235,6 +256,7 @@ namespace CUHK_JC_iCar {
     */
     //% block="iCar |%LRstate| motor move |%direction| at speed %speed |\\%"
     //% block.loc.zh-tw="iCar|%LRstate|馬達向|%direction|行，速度%speed |\\% "
+    //% block.loc.zh-cn="iCar|%LRstate|马达往|%direction|走，速度%speed |\\% "
     //% speed.min=0 speed.max=100 speed.defl=0
     //% group="Move" blockGap=10
     export function singleTurn(LRstate: LRstate, direction: direction, speed: number): void {
@@ -260,6 +282,7 @@ namespace CUHK_JC_iCar {
      */
     //% block="iCar |%index| at speed %speed |\\%"
     //% block.loc.zh-tw="iCar向|%index|，速度%speed|\\% "
+    //% block.loc.zh-cn="iCar往|%index|，速度%speed|\\% "
     //% speed.min=1 speed.max=100 speed.defl=1
     //% group="Move" blockGap=10
     export function carCtrlSpeed(index: CarState, speed: number): void {
@@ -280,6 +303,7 @@ namespace CUHK_JC_iCar {
     */ 
     //% block="iCar headlights turn OFF"
     //% block.loc.zh-tw="iCar車頭燈關閉"
+    //% block.loc.zh-cn="iCar车头灯关闭"
     //% group="Headlights" blockGap=10
     export function headLightsOff() {
       setHeadColor(0)
@@ -290,6 +314,7 @@ namespace CUHK_JC_iCar {
      */ 
     //% block="iCar headlights show $color"
     //% block.loc.zh-tw="iCar車頭燈設為$color"
+    //% block.loc.zh-cn="iCar车头灯设为$color"
     //% color.shadow="colorNumberPicker"
     //% group="Headlights" blockGap=10
     export function setHeadColor(color: number) {
@@ -414,6 +439,7 @@ namespace CUHK_JC_iCar {
     */
     //% block="iCar RGB module turn OFF"
     //% block.loc.zh-tw="iCar RGB模組關閉"
+    //% block.loc.zh-cn="iCar RGB模块关闭"
     //% group="RGB Module" blockGap=10
     export function breathLightsOff() {
       RGB_Car_Program().showColor(rgb(0, 0, 0))
@@ -424,6 +450,7 @@ namespace CUHK_JC_iCar {
     */
     //% block="iCar RGB module show Marquee"
     //% block.loc.zh-tw="iCar RGB模組啟動跑馬燈效"
+    //% block.loc.zh-cn="iCar RGB模块启动跑马灯效"
     //% group="RGB Module" blockGap=10
     export function runHorseLight() {
       for (let index = 0; index < 3; index++) {
@@ -440,6 +467,7 @@ namespace CUHK_JC_iCar {
     */
     //% block="iCar RGB module show Flowing"
     //% block.loc.zh-tw="iCar RGB模組啟動流水燈效"
+    //% block.loc.zh-cn="iCar RGB模块启动流水灯效"
     //% group="RGB Module" blockGap=10
     export function runFlowLight() {
       for (let index = 0; index < 3; index++) {
@@ -455,6 +483,7 @@ namespace CUHK_JC_iCar {
     */
     //% block="iCar RGB module show Breathing"
     //% block.loc.zh-tw="iCar RGB模組啟動呼吸燈效"
+    //% block.loc.zh-cn="iCar RGB模块启动呼吸灯效"
     //% group="RGB Module" blockGap=10
     export function runBreathLight() {
       for (let index = 0; index <= 13; index++) {
@@ -471,6 +500,7 @@ namespace CUHK_JC_iCar {
     */ 
     //% block="iCar RGB module show $color"
     //% block.loc.zh-tw="iCar RGB模組設為$color"
+    //% block.loc.zh-cn="iCar RGB模块设为$color"
     //% color.shadow="colorNumberPicker"
     //% group="RGB Module" blockGap=10
     export function setBreathColor(color: number) {
@@ -485,6 +515,7 @@ namespace CUHK_JC_iCar {
     */ 
     //% block="iCar ultrasonic sensor get distance(cm)"
     //% block.loc.zh-tw="iCar超聲波感應器讀取距離(cm)"
+    //% block.loc.zh-cn="iCar超声波感应器读取距离(cm)"
     //% group="Ultrasonic Sensor" blockGap=10
     export function Ultrasonic_Car(): number {
       let d = 0
@@ -509,6 +540,7 @@ namespace CUHK_JC_iCar {
     */ 
     //% block="is |%direct|iCar line detector %value ?"
     //% block.loc.zh-tw="iCar|%direct|線感應器讀數為%value ?"
+    //% block.loc.zh-cn="iCar|%direct|线感应器读数为%value ?"
     //% group="Line Detector" blockGap=10
     export function Line_Sensor(direct: enPos, value: enLineState): boolean {
       let temp: boolean = false;
@@ -863,6 +895,7 @@ namespace CUHK_JC_iCar {
      */
     //% block="when iCar remote control button | %button | is %action"
     //% block.loc.zh-tw="當iCar遙控器的 | %button |按鈕被%action"
+    //% block.loc.zh-cn="当iCar遥控器的 | %button |按钮被%action"
     //% button.fieldEditor="gridpicker"
     //% button.fieldOptions.columns=3
     //% button.fieldOptions.tooltips="false"
@@ -881,6 +914,7 @@ namespace CUHK_JC_iCar {
     */ 
     //% block="iCar remote control button | %button | is pressed?" 
     //% block.loc.zh-tw="iCar遙控器的 | %button |按鈕被按下?"
+    //% block.loc.zh-cn="iCar遥控器的 | %button |按钮被按下?"
     //% button.fieldEditor="gridpicker"
     //% button.fieldOptions.columns=3
     //% button.fieldOptions.tooltips="false"
@@ -897,6 +931,7 @@ namespace CUHK_JC_iCar {
     */
     //% block="iCar remote control receiver turn ON" 
     //% block.loc.zh-tw="iCar啟動遙控接收器"
+    //% block.loc.zh-cn="iCar启动遥控接收器"
     //% group="Remote Control" blockGap=10
     export function connectIrReceiver(): void {
       let protocol = 0
@@ -993,6 +1028,7 @@ namespace CUHK_JC_iCar {
     */
     //% block="is iCar obstacle sensor |%value ?"
     //% block.loc.zh-tw="iCar避障感應器 |%value ?"
+    //% block.loc.zh-cn="iCar避障感应器 |%value ?"
     //% group="Obstacle Sensor" blockGap=10
     export function Avoid_Sensor(value: enAvoidState): boolean {
       let temp: boolean = false;
@@ -1038,6 +1074,7 @@ namespace CUHK_JC_iCar {
     */
     //% block="iCar analog write pin | %num| to %value "
     //% block.loc.zh-tw="iCar向引腳| %num|模擬寫入%value"
+    //% block.loc.zh-cn="iCar向引脚| %num|模拟写入%value"
     //% group="Pin" blockGap=10
     //% value.min=0 value.max=1023
     export function analogPinWrite(num: enAnalogPin, value: number): void {
@@ -1055,6 +1092,7 @@ namespace CUHK_JC_iCar {
     */
     //% block="iCar servomotor pin | %num| turn OFF"
     //% block.loc.zh-tw="iCar伺服馬達| %num|關閉"
+    //% block.loc.zh-cn="iCar伺服马达| %num|关闭"
     //% group="Pin" blockGap=10
     //% num.min=1 num.max=2 
     export function servoStop(num: enServo): void {
@@ -1065,6 +1103,7 @@ namespace CUHK_JC_iCar {
     */
     //% block="iCar servomotor write pin | %num| to %value degree"
     //% block.loc.zh-tw="iCar伺服馬達| %num|轉至%value度"
+    //% block.loc.zh-cn="iCar伺服马达| %num|转至%value度"
     //% group="Pin" blockGap=10
     //% num.min=1 num.max=2 value.min=0 value.max=180
     export function servoAngle(num: enServo, value: number): void {
@@ -1079,6 +1118,7 @@ namespace CUHK_JC_iCar {
     */
     //% block="iCar digital write pin |%pinNumber| to |%onOffState|"
     //% block.loc.zh-tw="iCar將引腳|%pinNumber|設為|%onOffState|"
+    //% block.loc.zh-cn="iCar将引脚|%pinNumber|设为|%onOffState|"
     //% group="Pin" blockGap=10
     export function digitalWrite(pinNumber: pinNumber, onOffState: onOffState): void {
       if (pinNumber == 0) {
@@ -1100,6 +1140,7 @@ namespace CUHK_JC_iCar {
     */
     //% block="iCar digital read pin |%pinNumber| "
     //% block.loc.zh-tw="iCar向引腳|%pinNumber|數字讀取"
+    //% block.loc.zh-cn="iCar向引脚|%pinNumber|数字读取"
     //% group="Pin" blockGap=10
     export function digitalRead(pinNumber: pinNumber): number {
       if (pinNumber == 0) {
