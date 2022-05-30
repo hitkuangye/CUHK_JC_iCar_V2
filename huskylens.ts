@@ -325,7 +325,7 @@ namespace huskylens {
       return hk_x;
   }
   /**
-   * HuskyLens checks from result if the specific ID has been learned. Return true (1) if the specific ID has been learned. However, return false (0)
+   * HuskyLens checks from result if the specific ID has been learned. Return true (1) if the specific ID has been learned. Else, return false (0)
    * @param id to id ,eg: 1
    */
   //% block="HuskyLens check if ID %id is learned from the result"
@@ -339,7 +339,7 @@ namespace huskylens {
       return false;
   }
   /**
-   * HuskyLens checks if box or arrow corresponding to a specific ID appears on the screen from result. Return true (1) if the statement is correct. However, return false (0)
+   * HuskyLens checks if box or arrow corresponding to a specific ID appears on the screen from result. Return true (1) if the statement is correct. Else, return false (0)
    * @param id to id ,eg: 1
    */
   //% block="HuskyLens check if ID %id %Ht is on screen from the result"
@@ -744,7 +744,7 @@ namespace huskylens {
       return Protocol_t[2];
   }
   /**
-   * HuskyLens checks if box or arrow appears on the screen from result. Return true (1) if the statement is correct. However, return false (0)
+   * HuskyLens checks if box or arrow appears on the screen from result. Return true (1) if the statement is correct. Else, return false (0)
    */
   //%block="HuskyLens check if %Ht is on screen from the result"
   //% block.loc.zh-tw="HuskyLens從結果中獲取 %Ht是否在畫面中?"
