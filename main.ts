@@ -536,7 +536,7 @@ namespace CUHK_JC_iCar {
     }
     /* Line detector *************************************************************************************************************************/
     /**
-    * Check if left or right line detector detects white line or black line. Return true (1) if the statement is correct. However, return false (0)
+    * Check if left or right line detector detects white line or black line. Return true (1) if the statement is correct. Else, return false (0)
     */ 
     //% block="is |%direct|iCar line detector %value ?"
     //% block.loc.zh-tw="iCar|%direct|線感應器讀數為%value ?"
@@ -910,7 +910,7 @@ namespace CUHK_JC_iCar {
       }
     }
     /**
-    * Check if the specific button on iCar’s remote control is pressed. Return true (1) if the statement is correct. However, return false (0)
+    * Check if the specific button on iCar’s remote control is pressed. Return true (1) if the statement is correct. Else, return false (0)
     */ 
     //% block="iCar remote control button | %button | is pressed?" 
     //% block.loc.zh-tw="iCar遙控器的按鈕 | %button |被按下?"
@@ -1024,7 +1024,7 @@ namespace CUHK_JC_iCar {
     }
     /* Obstacle sensor *************************************************************************************************************************/
     /**
-    * Check if iCar’s obstacle sensor is blocked or unblocked. Return true (1) if the statement is correct. However, return false (0)
+    * Check if iCar’s obstacle sensor is blocked or unblocked. Return true (1) if the statement is correct. Else, return false (0)
     */
     //% block="is iCar obstacle sensor |%value ?"
     //% block.loc.zh-tw="iCar避障感應器 |%value ?"
