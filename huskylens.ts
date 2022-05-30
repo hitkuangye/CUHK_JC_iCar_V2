@@ -331,7 +331,7 @@ namespace huskylens {
     //% block="HuskyLens check if ID %id is learned from the result"
     //% block.loc.zh-tw="HuskyLens從結果中獲取ID %ID 是否已學習？"
     //% block.loc.zh-cn="HuskyLens从结果中获取ID %ID 是否已学习？ "
-    //% weight=76
+    //% weight=75
     //% advanced=true
     export function isLearned(id: number): boolean {
         let hk_x = countLearnedIDs();
@@ -444,7 +444,7 @@ namespace huskylens {
     //% block="HuskyLens get $data of the No. $index frame from the result"
     //% block.loc.zh-tw="HuskyLens從結果中獲取第 %index 個方框 %deta 參數"
     //% block.loc.zh-cn="HuskyLens从结果中获取第 %index 个方框 %deta 参数"
-    //% weight=60
+    //% weight=61
     //% advanced=true
     export function readBox_ss(index: number, data: Content3): number {
         let hk_x = -1
@@ -473,7 +473,7 @@ namespace huskylens {
     //% block="HuskyLens get $data of the No. $index arrow from the result"
     //% block.loc.zh-tw="HuskyLens從結果中獲取第 %index 個箭頭 %deta 參數"
     //% block.loc.zh-cn="HuskyLens从结果中获取第 %index 个箭头 %deta 参数"
-    //% weight=61
+    //% weight=60
     //% advanced=true
     export function readArrow_ss(index: number, data: Content4): number {
         let hk_x
@@ -744,7 +744,7 @@ namespace huskylens {
         return Protocol_t[2];
     }
     /**
-     * The box or arrow HuskyLens got from result appears in screen?
+     * HuskyLens checks if box or arrow appears on the screen from result. Return true (1) if the statement is correct. However, return false (0)
      */
     //%block="HuskyLens check if %Ht is on screen from the result"
     //% block.loc.zh-tw="HuskyLens從結果中獲取 %Ht是否在畫面中?"
