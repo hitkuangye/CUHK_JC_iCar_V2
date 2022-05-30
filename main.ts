@@ -166,8 +166,8 @@ namespace CUHK_JC_iCar {
       //% block="Pressed" block.loc.zh-tw="按下"
       //% block.loc.zh-cn="按下"
       Pressed = 0,
-      //% block="Released" block.loc.zh-tw="放鬆"
-      //% block.loc.zh-cn="放松"
+      //% block="Released" block.loc.zh-tw="鬆開"
+      //% block.loc.zh-cn="松开"
       Released = 1,
     }
   
@@ -278,7 +278,7 @@ namespace CUHK_JC_iCar {
     }
   
     /**
-     * Move iCar forward or backward at speed(1-100%)
+     * Move iCar in selected direction at speed(1-100%). Directions include “Forward”, “Backward”, “Turn Left”, “Turn Right”, “Rotate Left” and “Rotate Right” 
      */
     //% block="iCar |%index| at speed %speed |\\%"
     //% block.loc.zh-tw="iCar向|%index|，速度%speed|\\% "
@@ -511,7 +511,7 @@ namespace CUHK_JC_iCar {
   
     /* Ultrasonic sensor *************************************************************************************************************************/
     /**
-    * iCar get the reading of ultrasonic sensor
+    * Get the reading of iCar’s ultrasonic sensor in cm
     */ 
     //% block="iCar ultrasonic sensor get distance(cm)"
     //% block.loc.zh-tw="iCar超聲波感應器讀取距離(cm)"
@@ -536,7 +536,7 @@ namespace CUHK_JC_iCar {
     }
     /* Line detector *************************************************************************************************************************/
     /**
-    * The line detector at one side is blocked or not?
+    * Check if left or right line detector detects white line or black line. Return true (1) if the statement is correct. However, return false (0)
     */ 
     //% block="is |%direct|iCar line detector %value ?"
     //% block.loc.zh-tw="iCar|%direct|線感應器讀數為%value ?"
@@ -891,11 +891,11 @@ namespace CUHK_JC_iCar {
       };
     }
     /**
-     * iCar do something when a button on remote control is pressed or released
+     * Do something when the specific button on iCar’s remote control is pressed or released
      */
     //% block="when iCar remote control button | %button | is %action"
-    //% block.loc.zh-tw="當iCar遙控器的 | %button |按鈕被%action"
-    //% block.loc.zh-cn="当iCar遥控器的 | %button |按钮被%action"
+    //% block.loc.zh-tw="當iCar遙控器的按鈕 | %button |被%action"
+    //% block.loc.zh-cn="当iCar遥控器的按钮 | %button |被%action"
     //% button.fieldEditor="gridpicker"
     //% button.fieldOptions.columns=3
     //% button.fieldOptions.tooltips="false"
@@ -910,11 +910,11 @@ namespace CUHK_JC_iCar {
       }
     }
     /**
-    * iCar return true if the specified button is pressed on remote
+    * Check if the specific button on iCar’s remote control is pressed. Return true (1) if the statement is correct. However, return false (0)
     */ 
     //% block="iCar remote control button | %button | is pressed?" 
-    //% block.loc.zh-tw="iCar遙控器的 | %button |按鈕被按下?"
-    //% block.loc.zh-cn="iCar遥控器的 | %button |按钮被按下?"
+    //% block.loc.zh-tw="iCar遙控器的按鈕 | %button |被按下?"
+    //% block.loc.zh-cn="iCar遥控器的按钮 | %button |被按下?"
     //% button.fieldEditor="gridpicker"
     //% button.fieldOptions.columns=3
     //% button.fieldOptions.tooltips="false"
@@ -927,7 +927,7 @@ namespace CUHK_JC_iCar {
         return temp
       }
     /**
-    * iCar initialize the remote control receiver
+    * Initialize iCar’s remote control receiver
     */
     //% block="iCar remote control receiver turn ON" 
     //% block.loc.zh-tw="iCar啟動遙控接收器"
@@ -1024,7 +1024,7 @@ namespace CUHK_JC_iCar {
     }
     /* Obstacle sensor *************************************************************************************************************************/
     /**
-    * The obstacle sensor is blocked or not?
+    * Check if iCar’s obstacle sensor is blocked or unblocked. Return true (1) if the statement is correct. However, return false (0)
     */
     //% block="is iCar obstacle sensor |%value ?"
     //% block.loc.zh-tw="iCar避障感應器 |%value ?"
@@ -1070,7 +1070,7 @@ namespace CUHK_JC_iCar {
   
     /* servo ********************************************************************************************************************************/
     /**
-    * iCar analog write P4 or P5 to 0-1023 
+    * Analog write iCar’s pin to a value 0-1023. The pin can be P4, P5, J2 or J3
     */
     //% block="iCar analog write pin | %num| to %value "
     //% block.loc.zh-tw="iCar向引腳| %num|模擬寫入%value"
@@ -1088,7 +1088,7 @@ namespace CUHK_JC_iCar {
       }
     }
     /**
-    * Turn iCar's servomotor at J2 or J3 off 
+    * Turn iCar’s servomotor at pin J2 or J3 off
     */
     //% block="iCar servomotor pin | %num| turn OFF"
     //% block.loc.zh-tw="iCar伺服馬達| %num|關閉"
@@ -1099,7 +1099,7 @@ namespace CUHK_JC_iCar {
       setPwm(num + 2, 0, 0);
     }
     /**
-    * Move iCar's servomotor at J2 or J3 to degree 
+    * Move iCar’s servomotor at pin J2 or J3 to the specific degree(0-180) 
     */
     //% block="iCar servomotor write pin | %num| to %value degree"
     //% block.loc.zh-tw="iCar伺服馬達| %num|轉至%value度"
@@ -1114,7 +1114,7 @@ namespace CUHK_JC_iCar {
     }
     /* Digital write *************************************************************************************************************************/
     /**
-    * iCar digital write P4 or P5 to on or off 
+    * Set iCar’s pin P4 or P5 to on or off
     */
     //% block="iCar digital write pin |%pinNumber| to |%onOffState|"
     //% block.loc.zh-tw="iCar將引腳|%pinNumber|設為|%onOffState|"
@@ -1136,7 +1136,7 @@ namespace CUHK_JC_iCar {
     }
     /* Digital read *************************************************************************************************************************/
     /**
-    * iCar digital read P4 or P5's state
+    * Digital read the state of iCar’s pin P4 or P5. The state is either 0 or 1
     */
     //% block="iCar digital read pin |%pinNumber| "
     //% block.loc.zh-tw="iCar向引腳|%pinNumber|數字讀取"
