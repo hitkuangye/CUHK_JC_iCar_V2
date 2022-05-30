@@ -183,7 +183,7 @@ enum protocolAlgorithm {
     //% block.loc.zh-tw="物體分類"
     //% block.loc.zh-cn="物体分类"
     OBJECTCLASSIFICATION,
-    //%block="QR Recogmition (EDU only)"
+    //%block="QR Recognition (EDU only)"
     //% block.loc.zh-tw="二維碼識別（教育版獨有）"
     //% block.loc.zh-cn="二维码识别（教育版独有）"
     QRRECOGMITION,
@@ -233,7 +233,7 @@ namespace huskylens {
     }
 
     /**
-     * HuskyLens init I2C until success
+     * HuskyLens initializes I2C until success
      */
     //%block="HuskyLens initialize I2C until success"
     //% block.loc.zh-tw="HuskyLens通過I2C初始化直到成功"
@@ -246,7 +246,7 @@ namespace huskylens {
         yes();
     }
     /**
-     * HuskyLens change mode algorithm until success.
+     * HuskyLens changes algorithm until success. Algorithms include “Face Recognition”, “Object Tracking”, “Object Recognition”, “Line Tracking”, “Color Recognition”, “Tag Recognition”, “Object Classification”, “QR Recognition“ (EDU only) and “Barcode Recognition” (EDU only)
      */
     //%block="HuskyLens switch algorithm to %mode"
     //% block.loc.zh-tw="HuskyLens切換到 %mode 算法直到成功"
@@ -270,7 +270,7 @@ namespace huskylens {
     }
     
     /**
-     * HuskyLens get the parameter of box near the screen center from result.
+     * HuskyLens gets the parameter of the box near the center of the screen from result  
      */
     //% block="HuskyLens get %data of frame closest to the center of screen from the result"
     //% block.loc.zh-tw="HuskyLens從結果中獲取靠近中心方框的 %deta 參數"
@@ -298,12 +298,12 @@ namespace huskylens {
         return hk_x;
     }
     /**
-     * HuskyLens get the parameter of arrow near the screen center from result.
+     * HuskyLens gets the parameter of the arrow near the center of the screen from result   
      */
     //% block="HuskyLens get %data of arrow closest to the center of screen from the result"
     //% block.loc.zh-tw="HuskyLens從結果中獲取靠近中心箭頭的 %deta 參數"
     //% block.loc.zh-cn="HuskyLens从结果中获取靠近中心箭头的 %deta 参数"
-    //% weight=77
+    //% weight=76
     //% advanced=true
     export function readArrow_s(data: Content4): number {
         let hk_x
@@ -325,7 +325,7 @@ namespace huskylens {
         return hk_x;
     }
     /**
-     * The ID Huskylens got from result has been learned before?
+     * HuskyLens checks from result if the specific ID has been learned. Return true (1) if the specific ID has been learned. However, return false (0)
      * @param id to id ,eg: 1
      */
     //% block="HuskyLens check if ID %id is learned from the result"
@@ -339,7 +339,7 @@ namespace huskylens {
         return false;
     }
     /**
-     * The box or arrow corresponding to ID obtained by HuskyLens from result appears in screen？
+     * HuskyLens checks if box or arrow corresponding to a specific ID appears on the screen from result. Return true (1) if the statement is correct. However, return false (0)
      * @param id to id ,eg: 1
      */
     //% block="HuskyLens check if ID %id %Ht is on screen from the result"
@@ -357,7 +357,7 @@ namespace huskylens {
         }
     }
     /**
-     * HuskyLens get the parameter of the box corresponding to ID from result.
+     * HuskyLens gets the parameter of the box corresponding to the specific ID from result   
      * @param id to id ,eg: 1
      */
     //%block="HuskyLens get  $number1 of ID $id frame from the result"
@@ -386,7 +386,7 @@ namespace huskylens {
         return hk_x;
     }
      /**
-     * HuskyLens get the parameter of the arrow corresponding to ID from result.
+     * HuskyLens gets the parameter of the arrow corresponding to the specific ID from result   
      * @param id to id ,eg: 1
      */
 
@@ -419,7 +419,7 @@ namespace huskylens {
         return hk_x;
     }
     /**
-     * HuskyLens get the box or arrow total number from result.
+     * HuskyLens gets the total number of box or arrow from result
      * 
      */
     //%block="HuskyLens get a total number of %Httotal from the result"
@@ -438,7 +438,7 @@ namespace huskylens {
         }
     }
     /**
-     * HuskyLens get the parameter of Nth box from result.
+     * HuskyLens gets the parameter of the Nth box from result
      * @param index to index ,eg: 1
      */
     //% block="HuskyLens get $data of the No. $index frame from the result"
@@ -467,13 +467,13 @@ namespace huskylens {
         
     }
     /**
-     * HuskyLens get the parameter of the Nth arrow from result.
+     * HuskyLens gets the parameter of the Nth arrow from result
      * @param index to index ,eg: 1
     */
     //% block="HuskyLens get $data of the No. $index arrow from the result"
     //% block.loc.zh-tw="HuskyLens從結果中獲取第 %index 個箭頭 %deta 參數"
     //% block.loc.zh-cn="HuskyLens从结果中获取第 %index 个箭头 %deta 参数"
-    //% weight=60
+    //% weight=61
     //% advanced=true
     export function readArrow_ss(index: number, data: Content4): number {
         let hk_x
@@ -496,7 +496,7 @@ namespace huskylens {
         return hk_x;
     }
     /**
-     * HuskyLens get the total number of box or arrow from result.
+     * HuskyLens gets the total number of box or arrow corresponding to the specific ID from result  
      * @param id to id ,eg: 1
      */
     //%block="HuskyLens get a total number of ID %id %Httotal from the result"
@@ -515,7 +515,7 @@ namespace huskylens {
         }
     }
     /**
-     * HuskyLens get the parameter of the Nth box corresponding to ID from result.
+     * HuskyLens gets the parameter of the Nth box corresponding to the specific ID from result   
      * @param id to id ,eg: 1
      * @param index to index ,eg: 1
      */
@@ -548,7 +548,7 @@ namespace huskylens {
         return hk_x;
     }
     /**
-     * HuskyLens get the parameter of the Nth arrow corresponding to ID from result.
+     * HuskyLens gets the parameter of the Nth arrow corresponding to the specific ID from result   
      * @param id to id ,eg: 1
      * @param index to index ,eg: 1
      */
@@ -581,7 +581,7 @@ namespace huskylens {
         return hk_x;
     }
     /**
-     * Huskylens automatic learning ID
+     * HuskyLens learns the specific ID once automatically   
      * @param id to id ,eg: 1
      */
     //%block="HuskyLens learn ID %id once automatically"
@@ -594,7 +594,7 @@ namespace huskylens {
         //while(!wait(protocolCommand.COMMAND_RETURN_OK));
     }
     /**
-     * Huskylens forget all learning data of the current algorithm
+     * HuskyLens forgets all learning data of the current algorithm
      */
     //%block="HuskyLens forget all learning data of the current algorithm"
     //% block.loc.zh-tw="HuskyLens遺忘當前算法的所有學習數據"
@@ -606,7 +606,7 @@ namespace huskylens {
         //while(!wait(protocolCommand.COMMAND_RETURN_OK));
     }
     /**
-     * Set ID name
+     * HuskyLens sets the name of the specific ID of the current algorithm  
      * @param id to id ,eg: 1
      * @param name to name ,eg: "DFRobot"
      */
@@ -635,7 +635,7 @@ namespace huskylens {
         //}while(!wait(protocolCommand.COMMAND_RETURN_OK));
     }
     /**
-     * Display characters on the screen
+     * HuskyLens displays characters on the specific position of the screen
      * @param name to name ,eg: "DFRobot"
      * @param x to x ,eg: 150
      * @param y to y ,eg: 30
@@ -672,7 +672,7 @@ namespace huskylens {
         //}while(!wait(protocolCommand.COMMAND_RETURN_OK));
     }
     /**
-     * HuskyLens clear characters in the screen
+     * HuskyLens clears characters on the screen   
      */
     //%block="HuskyLens clear all custom texts on screen"
     //% block.loc.zh-tw="HuskyLens清除螢幕顯示的文字"
@@ -684,7 +684,7 @@ namespace huskylens {
         //while(!wait(protocolCommand.COMMAND_RETURN_OK));
     }
     /**
-     * Photos and screenshots
+     * HuskyLens takes a photo or screenshot and save it in the SD card
      */
     //%block="HuskyLens take %request and save to SD card"
     //% block.loc.zh-tw="HuskyLens觸發 %request 保存到SD卡"
@@ -708,7 +708,7 @@ namespace huskylens {
         basic.pause(500)
     }
     /**
-     * Save data model
+     * HuskyLens saves or loads all learning data of the current algorithm to the SD card or from the SD card
      */
     //%block="HuskyLens %command current algorithm data as No. %data model of SD card"
     //% block.loc.zh-tw="HuskyLens %command 當前算法數據為SD卡 %data 號模型"
@@ -733,7 +733,7 @@ namespace huskylens {
        basic.pause(500)
     }
     /**
-     * HuskyLens get the number of the learned ID from result.
+     * HuskyLens gets the total number of learned ID from result
      */
     //%block="HuskyLens get a total number of learned IDs from the result"
     //% block.loc.zh-tw="HuskyLens從結果中獲取已學ID總數"
