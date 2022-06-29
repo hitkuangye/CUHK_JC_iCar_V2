@@ -360,6 +360,9 @@ namespace CUHK_JC_iCar {
         pins.digitalWritePin(this.pin, 0);
         // don't yield to avoid races on initialization
       }
+      setPixelColor(pixeloffset: number, rgb: number): void {
+        this.setPixelRGB(pixeloffset >> 0, rgb >> 0);
+      }
       private setBufferRGB(offset: number, red: number, green: number, blue: number): void {
   
         this.buf[offset + 0] = green;
@@ -461,6 +464,7 @@ namespace CUHK_JC_iCar {
         RGB_Car_Program().showColor(rgb(0, 0, (0x0000FF & 0xFF) * 4095 / 255))
         basic.pause(200)
       }
+      RGB_Car_Program().showColor(rgb(0, 0, 0))
     }
     /**
     * Set iCar's RGB module to show Flowing effect once
@@ -471,12 +475,14 @@ namespace CUHK_JC_iCar {
     //% group="RGB Module" blockGap=10
     export function runFlowLight() {
       for (let index = 0; index < 3; index++) {
-        for (let index = 0; index <= 2; index++) {
+        for (let index1 = 0; index1 <= 2; index1++) {
           RGB_Car_Program().clear()
-          RGB_Car_Program().showColor(rgb(0, ((0x00FF00 >> 8) & 0xFF), 0))
+          RGB_Car_Program().setPixelColor(index1, 0x00FF00)
+          RGB_Car_Program().show()
           basic.pause(200)
         }
       }
+      RGB_Car_Program().showColor(rgb(0, 0, 0))
     }
     /**
     * Set iCar's RGB module to show Breathing effect once
@@ -507,6 +513,7 @@ namespace CUHK_JC_iCar {
       RGB_Car_Program().showColor(rgb(((color >> 16) & 0xFF), ((color >> 8) & 0xFF), ((color) & 0xFF) * 4095 / 255))
   
     }
+  
   
   
     /* Ultrasonic sensor *************************************************************************************************************************/
