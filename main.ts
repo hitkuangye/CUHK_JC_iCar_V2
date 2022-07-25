@@ -261,19 +261,13 @@ namespace CUHK_JC_iCar {
     //% group="Move" blockGap=10
     export function singleTurn(LRstate: LRstate, direction: direction, speed: number): void {
       if (LRstate == 0 && direction == 0) {
-        carCtrlSpeed(3, speed)
+        setPwm(12, 0, Math.round(pins.map(speed, 0, 100, 350, 4095)));
       } else if (LRstate == 1 && direction == 0) {
-        carCtrlSpeed(2, speed)
+        setPwm(15, 0, Math.round(pins.map(speed, 0, 100, 350, 4095)));
       } else if (LRstate == 0 && direction == 1) {
-        setPwm(12, 0, 0);
         setPwm(13, 0, Math.round(pins.map(speed, 0, 100, 350, 4095)));
-        setPwm(14, 0, 0);
-        setPwm(15, 0, 0);
       } else {
-        setPwm(12, 0, 0);
-        setPwm(13, 0, 0);
         setPwm(14, 0, Math.round(pins.map(speed, 0, 100, 350, 4095)));
-        setPwm(15, 0, 0);
       }
     }
   
