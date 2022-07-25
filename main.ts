@@ -262,12 +262,16 @@ namespace CUHK_JC_iCar {
     export function singleTurn(LRstate: LRstate, direction: direction, speed: number): void {
       if (LRstate == 0 && direction == 0) {
         setPwm(12, 0, Math.round(pins.map(speed, 0, 100, 350, 4095)));
+        setPwm(13, 0, 350);
       } else if (LRstate == 1 && direction == 0) {
         setPwm(15, 0, Math.round(pins.map(speed, 0, 100, 350, 4095)));
+        setPwm(14, 0, 350);
       } else if (LRstate == 0 && direction == 1) {
         setPwm(13, 0, Math.round(pins.map(speed, 0, 100, 350, 4095)));
+        setPwm(12, 0, 350);
       } else {
         setPwm(14, 0, Math.round(pins.map(speed, 0, 100, 350, 4095)));
+        setPwm(15, 0, 350);
       }
     }
   
