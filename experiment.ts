@@ -25,11 +25,11 @@ namespace CUHK_JC_iCar_Experiments {
         //% block="elderlies"
         //% block.loc.zh-tw="長者"
         //% block.loc.zh-cn="長者"
-        skill = 1,
+        elderlies = 1,
         //% block="kids"
         //% block.loc.zh-tw="小孩"
         //% block.loc.zh-cn="小孩"
-        rule = 2,
+        kids = 2,
     }
 
     export function sort(location: string[]): number[] {
@@ -198,9 +198,6 @@ namespace CUHK_JC_iCar_Experiments {
     //% expandableArgumentMode="toggle"
     //% group="iCar Moral Dilemma" blockGap=10
     export function moralDilemma(index?: person): void {
-        huskylens.initI2c()
-        huskylens.initMode(protocolAlgorithm.OBJECTCLASSIFICATION)
-        basic.showIcon(IconNames.Happy)
         while (true) {
             if (CUHK_JC_iCar.Line_Sensor(CUHK_JC_iCar.enPos.Left, CUHK_JC_iCar.enLineState.WhiteLine) && CUHK_JC_iCar.Line_Sensor(CUHK_JC_iCar.enPos.Right, CUHK_JC_iCar.enLineState.WhiteLine)) {
                 CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.Forward, 40)
@@ -221,19 +218,41 @@ namespace CUHK_JC_iCar_Experiments {
         }
         if (huskylens.isAppear(2, HUSKYLENSResultType_t.HUSKYLENSResultBlock)) {
             basic.showNumber(2)
-            CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.TurnLeft, 70)
+            if (index == 1) {
+                CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.TurnRight, 70)
+            }
+            else {
+                CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.TurnLeft, 70)
+            }
             basic.pause(200)
             CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.Forward, 60)
             basic.pause(1000)
             CUHK_JC_iCar.carStop()
         } else if (huskylens.isAppear(3, HUSKYLENSResultType_t.HUSKYLENSResultBlock)) {
             basic.showNumber(3)
-            CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.TurnRight, 70)
+            if (index == 2) {
+                CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.TurnRight, 70)
+            }
+            else {
+                CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.TurnLeft, 70)
+            }
             basic.pause(200)
             CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.Forward, 60)
             basic.pause(1000)
             CUHK_JC_iCar.carStop()
         }
+    }
+    /**
+    * Initialize camera for moral dilemma experiment
+    */
+    //% block="iCar init moral dilemma"
+    //% block.loc.zh-tw="iCar初始化道德困境實驗"
+    //% block.loc.zh-cn="iCar初始化道德困境实验"
+    //% group="iCar Moral Dilemma" blockGap=10
+    export function initMoralDilemma(): void {
+        huskylens.initI2c()
+        huskylens.initMode(protocolAlgorithm.OBJECTCLASSIFICATION)
+        basic.showIcon(IconNames.Happy)
     }
     /**
     * Sample points of delivering to A, B, F, G
