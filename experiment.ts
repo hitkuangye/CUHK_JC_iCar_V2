@@ -9,8 +9,8 @@ namespace CUHK_JC_iCar_Experiments {
     let tag: number[] = []
     export enum reason {
         //% block="Skill-based"
-        //% block.loc.zh-tw="本能"
-        //% block.loc.zh-cn="本能"
+        //% block.loc.zh-tw="功能"
+        //% block.loc.zh-cn="功能"
         skill = 1,
         //% block="Rule-based"
         //% block.loc.zh-tw="規則"
@@ -270,9 +270,9 @@ namespace CUHK_JC_iCar_Experiments {
     //% block="iCar deliver food to $location using %index reasoning || at left speed %LSpeed\\%, right speed %RSpeed\\%, forward speed %FSpeed\\%"
     //% block.loc.zh-tw="iCar基於 %index 的推理，送遞外賣至 $location 點||，左速度為%LSpeed\\%，右速度為%RSpeed\\%，前行速度為%FSpeed\\%"
     //% block.loc.zh-cn="iCar基于 %index 的推理，送递外卖至 $location 点||，左速度为%LSpeed\\%，右速度为%RSpeed\\%，前行速度为%FSpeed\\%"
-    //% LSpeed.min=1 LSpeed.max=100 LSpeed.defl=30
-    //% RSpeed.min=1 RSpeed.max=100 RSpeed.defl=30
-    //% FSpeed.min=1 FSpeed.max=100 FSpeed.defl=30
+    //% LSpeed.min=1 LSpeed.max=100 LSpeed.defl=20
+    //% RSpeed.min=1 RSpeed.max=100 RSpeed.defl=20
+    //% FSpeed.min=1 FSpeed.max=100 FSpeed.defl=20
     //% inlineInputMode=inline
     //% expandableArgumentMode="toggle"
     //% group="iCar Food Delivery" blockGap=10
