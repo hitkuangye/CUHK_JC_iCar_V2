@@ -314,6 +314,8 @@ namespace CUHK_JC_iCar_Experiments {
                         CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.TurnLeft, LSpeed)
                         huskylens.request()
                     }
+                    CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.Forward, FSpeed)
+                    basic.pause(800)
                 }
                 Turn_90_Deg(RSpeed)
                 Turn_90_Deg(RSpeed)
