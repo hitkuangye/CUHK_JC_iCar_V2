@@ -107,6 +107,14 @@ namespace CUHK_JC_iCar_Experiments {
                 break;
             }
         }
+
+        Current_Location = tag
+        if (straight == true) {
+            CUHK_JC_iCar.setHeadColor(0x00ff00)
+            forward_until_tag(tag, FSpeed)
+            Turn_90_Deg(RSpeed)
+        }
+    }
     function forward_until_tag(tag: number, FSpeed: number) {
         huskylens.request()
         while (huskylens.readeBox(tag, Content1.yCenter) < 60) {
