@@ -6,6 +6,7 @@ namespace CUHK_JC_iCar_Experiments {
     let Pointing = 1
     let Target = 0
     let start = 0
+    let forceLeft=0
     let tag: number[] = []
     export enum reason {
         //% block="Skill-based"
@@ -168,6 +169,13 @@ namespace CUHK_JC_iCar_Experiments {
             tag = temp
             temp = []
         }
+        for (let value of [4, 6]) {
+            if (tag.indexOf(value) != -1) {
+                if (tag.indexOf(value + 1) == -1 && tag.indexOf(value + 2) == -1 && (tag.indexOf(value - 1) != -1 || tag.indexOf(value - 2) != -1)) {
+                    forceLeft = 1
+                }
+            }
+        }
     }
     function turn_to_tag(t: number, LSpeed: number, RSpeed: number, FSpeed: number, straight: boolean) {
         CUHK_JC_iCar.headLightsOff()
@@ -300,9 +308,9 @@ namespace CUHK_JC_iCar_Experiments {
                 while (CUHK_JC_iCar.Line_Sensor(CUHK_JC_iCar.enPos.Left, CUHK_JC_iCar.enLineState.BlackLine)) {
                     CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.SpinLeft, LSpeed)
                 }
-                if(Current_Location == 4 || Current_Location == 6){
+                if(forceLeft == 1 && (Current_Location == 4 || Current_Location == 6)){
                     huskylens.request()
-                    while (!(huskylens.isAppear(6, HUSKYLENSResultType_t.HUSKYLENSResultBlock))) {
+                    while (!(huskylens.isAppear(Current_Location, HUSKYLENSResultType_t.HUSKYLENSResultBlock))) {
                         CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.TurnLeft, LSpeed)
                         huskylens.request()
                     }
