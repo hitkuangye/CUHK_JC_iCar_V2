@@ -300,6 +300,13 @@ namespace CUHK_JC_iCar_Experiments {
                 while (CUHK_JC_iCar.Line_Sensor(CUHK_JC_iCar.enPos.Left, CUHK_JC_iCar.enLineState.BlackLine)) {
                     CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.SpinLeft, LSpeed)
                 }
+                if(Current_Location == 4 || Current_Location == 6){
+                    huskylens.request()
+                    while (!(huskylens.isAppear(6, HUSKYLENSResultType_t.HUSKYLENSResultBlock))) {
+                        CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.TurnLeft, LSpeed)
+                        huskylens.request()
+                    }
+                }
                 Turn_90_Deg(RSpeed)
                 Turn_90_Deg(RSpeed)
                 Line_Follow_Until_Tag(Target, LSpeed, RSpeed, FSpeed, false)
