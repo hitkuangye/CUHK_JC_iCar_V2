@@ -373,9 +373,12 @@ namespace CUHK_JC_iCar_Experiments {
                         CUHK_JC_iCar.headLightsOff()
                         Pointing = 2
                         Current_Location = 6
-                        while (CUHK_JC_iCar.Line_Sensor(CUHK_JC_iCar.enPos.Left, CUHK_JC_iCar.enLineState.BlackLine)) {
-                            CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.SpinLeft, LSpeed)
+                        huskylens.request()
+                        while (!(huskylens.isAppear(6, HUSKYLENSResultType_t.HUSKYLENSResultBlock))) {
+                            CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.TurnLeft, LSpeed)
+                            huskylens.request()
                         }
+                        CUHK_JC_iCar.carStop()
                         Turn_90_Deg(RSpeed)
                         Turn_90_Deg(RSpeed)
                         Line_Follow_Until_Tag(6, LSpeed, RSpeed, FSpeed, false)
