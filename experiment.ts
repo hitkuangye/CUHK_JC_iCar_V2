@@ -390,7 +390,8 @@ namespace CUHK_JC_iCar_Experiments {
                         Current_Location = 6
                         huskylens.request()
                         while (!(huskylens.isAppear(6, HUSKYLENSResultType_t.HUSKYLENSResultBlock))) {
-                            CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.TurnLeft, LSpeed)
+                            CUHK_JC_iCar.singleTurn(CUHK_JC_iCar.LRstate.Right, CUHK_JC_iCar.direction.Forward, LSpeed)
+                            CUHK_JC_iCar.singleTurn(CUHK_JC_iCar.LRstate.Left, CUHK_JC_iCar.direction.Forward, RSpeed/3)
                             huskylens.request()
                         }
                         CUHK_JC_iCar.carStop()
