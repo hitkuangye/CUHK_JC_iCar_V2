@@ -7,6 +7,10 @@ namespace CUHK_JC_iCar_Experiments {
     let Target = 0
     let start = 0
     let forceLeft=0
+    let forceRight_D = 0
+    let forceRight_F = 0
+    let forceStraight_C = 0
+    let forceStraight_G = 0
     let tag: number[] = []
     export enum reason {
         //% block="Skill-based"
@@ -101,7 +105,7 @@ namespace CUHK_JC_iCar_Experiments {
                 huskylens.request()
             }
             CUHK_JC_iCar.carStop()
-            basic.pause(200)
+            basic.pause(1000)
             huskylens.request()
             if (!(huskylens.isAppear(tag, HUSKYLENSResultType_t.HUSKYLENSResultBlock))) {
                 break;
@@ -140,9 +144,9 @@ namespace CUHK_JC_iCar_Experiments {
         if (CUHK_JC_iCar.Line_Sensor(CUHK_JC_iCar.enPos.Left, CUHK_JC_iCar.enLineState.WhiteLine) && CUHK_JC_iCar.Line_Sensor(CUHK_JC_iCar.enPos.Right, CUHK_JC_iCar.enLineState.WhiteLine)) {
             CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.Forward, FSpeed)
         } else if (CUHK_JC_iCar.Line_Sensor(CUHK_JC_iCar.enPos.Left, CUHK_JC_iCar.enLineState.WhiteLine) && CUHK_JC_iCar.Line_Sensor(CUHK_JC_iCar.enPos.Right, CUHK_JC_iCar.enLineState.BlackLine)) {
-            CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.TurnRight, RSpeed)
+            CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.SpinRight, RSpeed)
         } else if (CUHK_JC_iCar.Line_Sensor(CUHK_JC_iCar.enPos.Left, CUHK_JC_iCar.enLineState.BlackLine) && CUHK_JC_iCar.Line_Sensor(CUHK_JC_iCar.enPos.Right, CUHK_JC_iCar.enLineState.WhiteLine)) {
-            CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.TurnLeft, LSpeed)
+            CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.SpinLeft, LSpeed)
         } else {
             CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.Forward, FSpeed)
         }
@@ -171,8 +175,27 @@ namespace CUHK_JC_iCar_Experiments {
         }
         for (let value of [4, 6]) {
             if (tag.indexOf(value) != -1) {
+                if(tag.indexOf(value - 1) != -1 || tag.indexOf(value - 2) != -1){
+                    if(tag.indexOf(value + 1) == -1 && tag.indexOf(value + 2) == -1){
+                        forceLeft = 1
+                    } else {
+                        if(value == 4){
+                            forceRight_D = 1
+                        } else {
+                            forceRight_F = 1
+                        }
+                    }
+                }
+            }
+        }
+        for (let value of [3, 7]) {
+            if (tag.indexOf(value) != -1) {
                 if (tag.indexOf(value + 1) == -1 && tag.indexOf(value + 2) == -1 && (tag.indexOf(value - 1) != -1 || tag.indexOf(value - 2) != -1)) {
-                    forceLeft = 1
+                    if (value == 3){
+                        forceStraight_C = 1
+                    } else {
+                        forceStraight_G = 1
+                    }
                 }
             }
         }
@@ -196,6 +219,10 @@ namespace CUHK_JC_iCar_Experiments {
             CUHK_JC_iCar.setHeadColor(0x00ff00)
             basic.pause(200)
         }
+    }
+    function dummy_length(FSpeed: number){
+        CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.Forward, FSpeed)
+        basic.pause(-30*FSpeed+1400)
     }
     /**
     * Save elderlies or kids in moral dilemma experiment
@@ -298,12 +325,34 @@ namespace CUHK_JC_iCar_Experiments {
                 while (tag.length != 0) {
                     if (tag[0] - Target <= 2) {
                         Target = tag.shift()
+                        if(Current_Location == 3 && Target == 5){
+                            Line_Follow_Until_Tag(4, LSpeed, RSpeed, FSpeed, false)
+                            while (CUHK_JC_iCar.Line_Sensor(CUHK_JC_iCar.enPos.Left, CUHK_JC_iCar.enLineState.WhiteLine)) {
+                                CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.TurnRight, RSpeed)
+                            }
+                        }
+                        if(Current_Location == 5 && Target == 7){
+                            Line_Follow_Until_Tag(6, LSpeed, RSpeed, FSpeed, false)
+                            while (CUHK_JC_iCar.Line_Sensor(CUHK_JC_iCar.enPos.Left, CUHK_JC_iCar.enLineState.WhiteLine)) {
+                                CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.TurnRight, RSpeed)
+                            }
+                        }
                         Line_Follow_Until_Tag(Target, LSpeed, RSpeed, FSpeed, false)
                         CUHK_JC_iCar.setHeadColor(0x00ff00)
                         basic.pause(1000)
                         CUHK_JC_iCar.headLightsOff()
                     }
                     else { break }
+                    if(forceRight_D == 1 && Current_Location == 4){
+                        while (CUHK_JC_iCar.Line_Sensor(CUHK_JC_iCar.enPos.Left, CUHK_JC_iCar.enLineState.WhiteLine)) {
+                            CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.TurnRight, RSpeed)
+                        }
+                    }
+                    if(forceRight_F == 1 && Current_Location == 6){
+                        while (CUHK_JC_iCar.Line_Sensor(CUHK_JC_iCar.enPos.Left, CUHK_JC_iCar.enLineState.WhiteLine)) {
+                            CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.TurnRight, RSpeed)
+                        }
+                    }
                 }
                 while (CUHK_JC_iCar.Line_Sensor(CUHK_JC_iCar.enPos.Left, CUHK_JC_iCar.enLineState.BlackLine)) {
                     CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.SpinLeft, LSpeed)
@@ -314,8 +363,13 @@ namespace CUHK_JC_iCar_Experiments {
                         CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.TurnLeft, LSpeed)
                         huskylens.request()
                     }
-                    CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.Forward, FSpeed)
-                    basic.pause(800)
+                    dummy_length(FSpeed)
+                }
+                if(forceStraight_C == 1 && Current_Location == 3){
+                    dummy_length(FSpeed)
+                }
+                if(forceStraight_G == 1 && Current_Location == 7){
+                    dummy_length(FSpeed)
                 }
                 Turn_90_Deg(RSpeed)
                 Turn_90_Deg(RSpeed)
@@ -357,6 +411,7 @@ namespace CUHK_JC_iCar_Experiments {
                         CUHK_JC_iCar.headLightsOff()
                         Pointing = 7
                         Current_Location = 3
+                        dummy_length(FSpeed)
                         while (CUHK_JC_iCar.Line_Sensor(CUHK_JC_iCar.enPos.Left, CUHK_JC_iCar.enLineState.BlackLine)) {
                             CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.SpinLeft, LSpeed)
                         }
@@ -395,8 +450,7 @@ namespace CUHK_JC_iCar_Experiments {
                             CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.TurnLeft, LSpeed)
                             huskylens.request()
                         }
-                        CUHK_JC_iCar.carCtrlSpeed(CUHK_JC_iCar.CarState.Forward, FSpeed)
-                        basic.pause(800)
+                        dummy_length(FSpeed)
                         CUHK_JC_iCar.carStop()
                         Turn_90_Deg(RSpeed)
                         Turn_90_Deg(RSpeed)
